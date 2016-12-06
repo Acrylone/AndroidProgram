@@ -1,0 +1,6 @@
+    private int getSumOfDice() {
+        int sum = 0;
+        for(Button b : dice) {
+            sum += Integer.valueOf(b.getText().toString());
+        }
+    }
