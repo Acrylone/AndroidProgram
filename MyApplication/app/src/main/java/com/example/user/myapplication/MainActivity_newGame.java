@@ -1,22 +1,32 @@
 package com.example.user.myapplication;
 
-import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.logging.Handler;
 
 public class MainActivity_newGame extends AppCompatActivity {
 
-    private static final int NUM_OF_DICE = 6;
+    private static final int NUM_OF_DICE = 5;
     private static final int NUM_OF_ALLOWED_THROWS = 3;
+    private static final int NUM_OF_LAUNCHES_MAX = 15;
     private int alreadyThrown;
 
-    private Button[] dice;
-    private boolean[] diceActivations;
+    private DieImageButton[] dice;
+    private List<ScoreButton> scoreButtons;
+    private CalculateDice calculateDice;
+
+    private MediaPlayer dice_sound = null;
+    private int sound_id;
+    private Handler handler;    //Post message to start roll
+    private Timer timer = new Timer();    //Used to implement feedback to user
+    private boolean rolling = false;        //Is die rolling?
 
 
     @Override
@@ -26,99 +36,195 @@ public class MainActivity_newGame extends AppCompatActivity {
 
         alreadyThrown = 0;
 
-        dice = new Button[NUM_OF_DICE];
-        dice[0] = (Button) findViewById(R.id.diceOne);
-        dice[1] = (Button) findViewById(R.id.diceTwo);
-        dice[2] = (Button) findViewById(R.id.diceThree);
-        dice[3] = (Button) findViewById(R.id.diceFour);
-        dice[4] = (Button) findViewById(R.id.diceFive);
-        dice[5] = (Button) findViewById(R.id.diceSix);
 
-        diceActivations = new boolean[NUM_OF_DICE];
-        for(int i = 0 ; i< diceActivations.length ; i++) {
-            diceActivations[i] = true;
+        dice = new DieImageButton[NUM_OF_DICE];
+        dice[0] = (DieImageButton)
+                findViewById(R.id.diceOne);
+
+        dice[1] = (DieImageButton)
+                findViewById(R.id.diceTwo);
+
+        dice[2] = (DieImageButton)
+                findViewById(R.id.diceThree);
+
+        dice[3] = (DieImageButton)
+                findViewById(R.id.diceFour);
+
+        dice[4] = (DieImageButton)
+                findViewById(R.id.diceFive);
+
+
+        for (DieImageButton dib : dice) {
+            dib.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    toggleActivation(view);
+                }
+            });
         }
+
+        for (int i = 0; i < NUM_OF_DICE; i++)
+        {
+            dice[i].setValue(i + 1);
+        }
+
+        calculateDice = new CalculateDice(dice);
+
+        scoreButtons = new ArrayList<>();
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_ONE));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_TWO));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_THREE));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_FOUR));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_FIVE));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_SIX));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_TOTAL));
+        scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_BONUS));
+        scoreButtons.add((ScoreButton) findViewById(R.id.PAIR));
+        scoreButtons.add((ScoreButton) findViewById(R.id.TWOPAIRS));
+        scoreButtons.add((ScoreButton) findViewById(R.id.THREEOFKIND));
     }
 
-    public int getRandomDieNum() {
-        return (int) (Math.random() * 6 + 1);
-    }
+//    private void playSound(int resId) {
+//        if(sound_id != null) {
+//                dice_sound.stop();
+//                dice_sound.release();
+//            }
+//            dice_sound = MediaPlayer.load(this, resId);
+//            dice_sound.start();
+//        }
+//
+//        sound_id = dice_sound.load(this, R.raw.shake_dice, 1);
 
     public void throwDice(View view) {
+//      playSound(R.raw.shake_dice);
+//        Label:
+        {
+            if (alreadyThrown < NUM_OF_ALLOWED_THROWS) {
+                switch (view.getId()) {
+                    case R.id.launch:
+                        for (int i = 0; i < dice.length; i++) {
+                            if (dice[i].isActive()) {
 
-        if(alreadyThrown < NUM_OF_ALLOWED_THROWS) {
-            switch (view.getId()) {
-                case R.id.launch:
-                    for (int i = 0 ; i < dice.length ; i++) {
-                        if(diceActivations[i]) {
-                            dice[i].setText(String.valueOf(getRandomDieNum()));
+                                dice[i].throwSelfDie();
+
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
+
+                alreadyThrown++;
+
+                if (alreadyThrown == NUM_OF_ALLOWED_THROWS) {
+                    Button throwButton = (Button) findViewById(R.id.launch);
+                    throwButton.setEnabled(false);
+                }
             }
 
-            alreadyThrown++;
-
-            if(alreadyThrown == NUM_OF_ALLOWED_THROWS) {
-                Button throwButton = (Button)findViewById(R.id.launch);
-                throwButton.setEnabled(false);
+            //find all score options
+            for (int i = 0; i < scoreButtons.size(); i++) {
+                switch (scoreButtons.get(i).getId()) {
+                    case R.id.SCORE_ONE:
+                        clickScoreButton1(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_TWO:
+                        clickScoreButton2(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_THREE:
+                        clickScoreButton3(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_FOUR:
+                        clickScoreButton4(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_FIVE:
+                        clickScoreButton5(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_SIX:
+                        clickScoreButton6(scoreButtons.get(i));
+                        break;
+                    case R.id.SCORE_TOTAL:
+                        clickScoreButton7(scoreButtons.get(i)); //TODO - change to other function
+                        break;
+                    case R.id.PAIR:
+                        clickScoreButton7(scoreButtons.get(i));
+                        break;
+//                    case R.id.TWOPAIRS:
+//                        clickScoreButton9(scoreButtons.get(i));
+//                        break;
+                    case R.id.THREEOFKIND:
+                        clickScoreButton8(scoreButtons.get(i));
+                        break;
+//                    case R.id.FOUROFKIND:
+//                        clickScoreButton11(scoreButtons.get(i));
+//                        break;
+                }
             }
+
+
         }
     }
 
-    public void dieActivation(View view) {
-        Context context = getApplicationContext();
-        String text = "Hello toast!";
-        int duration = Toast.LENGTH_SHORT;
 
-        Button b = (Button) view;
-
-//        b.setAlpha((float)0.5);
-
-        for(int i = 0 ; i < dice.length ; i++) {
-            if((Button)view == dice[i]) {
-                diceActivations[i] = !diceActivations[i];
-
-                if(diceActivations[i]) {
-                    b.setAlpha(1);
-                }
-                else {
-                    b.setAlpha((float)0.5);
-                }
-                break;
-            }
+    public void toggleActivation(View view) {
+        if (alreadyThrown != 0 && alreadyThrown != NUM_OF_ALLOWED_THROWS) {
+            ((DieImageButton) view).toggleActivation();
         }
-
-//        switch (view.getId()) {
-//            case R.id.diceOne:
-//                text += "1";
-//                break;
-//            case R.id.diceTwo:
-//                text += "2";
-//                break;
-//            case R.id.diceThree:
-//                text += "3";
-//                break;
-//            case R.id.diceFour:
-//                text += "4";
-//                break;
-//            case R.id.diceFive:
-//                text += "5";
-//                break;
-//            case R.id.diceSix:
-//                text += "6";
-//                break;
-//            default:
-//                break;
-//
-//
-//        }
-
-
-//
-//        Toast toast = Toast.makeText(context, text, duration);
-//        toast.show();
     }
+
+    //Class of dice scores
+    public void clickScoreButton1(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(1));
+    }
+
+    public void clickScoreButton2(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(2));
+    }
+
+    public void clickScoreButton3(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(3));
+    }
+
+    public void clickScoreButton4(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(4));
+    }
+
+    public void clickScoreButton5(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(5));
+    }
+
+    public void clickScoreButton6(ScoreButton view) {
+        view.turnVisible(calculateDice.calculateScoreRepetition(6));
+    }
+
+    public void clickScoreButton7(ScoreButton view) {
+        view.turnVisible(calculateDice.findHighestNRepititions(2));
+    }
+    public void clickScoreButton8(ScoreButton view) {
+        view.turnVisible(calculateDice.findHighestNRepititions(3));
+    }
+
+//
+//    public void clickScoreButton8(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
+//
+//    public void clickScoreButton9(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
+//
+//    public void clickScoreButton10(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
+//
+//    public void clickScoreButton11(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
+//
+//    public void clickScoreButton12(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
+//
+//    public void clickScoreButton13(ScoreButton view) {
+//        view.turnVisible(calculateDice.getRepetitionNumber(0));
+//    }
 }
-
 

@@ -3,243 +3,362 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main_newgame"
 
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#0099cc"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#0099cc"
     tools:context="com.example.user.myapplication.MainActivity_newGame">
 
-    <TextView
-        android:text="AS"
+
+    <!--<selector xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+    <!--<item android:drawable="@drawable/diceOne" android:state_enabled="true" android:state_window_focused="false"/>-->
+    <!--<item android:drawable="@drawable/diceTwo" android:state_pressed="true"/>-->
+    <!--<item android:drawable="@drawable/diceThree" android:state_focused="true"/>-->
+    <!--<item android:drawable="@drawable/diceFour" android:state_enabled="true"/>-->
+    <!--<item android:drawable="@drawable/diceFive" android:state_enabled="true"/>-->
+
+    <!--</selector>-->
+
+
+    <!--<ImageView android:id="@+id/imageView1"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentLeft="true"-->
+    <!--android:layout_alignParentTop="true"-->
+    <!--android:onClick="throwDice"-->
+    <!--android:src="@drawable/one" />-->
+
+    <TableLayout
         android:layout_width="150dp"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:id="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/launch">
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="ONE" />
+
+        <com.example.user.myapplication.ScoreButton
+            android:id="@+id/SCORE_ONE"
+            android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+
+            android:background="#EF5350" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="TWO" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_TWO"
+                android:background="#0099cc"/>
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#F44336" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="THREE" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_THREE"
+                android:background="#0099cc"/>
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#E53935" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="FOUR" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_FOUR"
+                android:background="#0099cc"/>
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#D32F2F" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="FIVE" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_FIVE"
+                android:background="#0099cc"/>
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#C62828" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="SIX" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_SIX"
+                android:background="#0099cc"/>
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#B71C1C" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="TOTAL" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_TOTAL" />
+        </TableRow>
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="BONUS (+50)" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/SCORE_BONUS" />
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#B71C1C" />
+
+
+    </TableLayout>
+
+    <TableLayout
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/launch">
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="PAIR" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/PAIR"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#EF5350" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="2 PAIRS" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/TWOPAIRS"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#F44336" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="3 OF KIND" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/THREEOFKIND"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#E53935" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="4 OF KIND" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/FOUROFKIND"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#D32F2F" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="1-2-3-4-5" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/STRAIGHTLOW"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#C62828" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="2-3-4-5-6" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/STRAIGHTHIGH"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#B71C1C" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="FULL HOUSE" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/FULLHOUSE"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#D50000" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="CHANCE" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/CHANCE"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#D50000" />
+
+        <TableRow
+            android:layout_weight="1">
+            <TextView android:text="YATZY" />
+
+            <com.example.user.myapplication.ScoreButton
+                android:id="@+id/YATZY"
+                android:background="#0099cc"/>
+
+        </TableRow>
+        <View
+            android:layout_height="2dip"
+            android:background="#D50000" />
+
+
+    </TableLayout>
+
+    <LinearLayout
+        android:id="@+id/dice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:orientation="horizontal">
+
+        <com.example.user.myapplication.DieImageButton
+            android:id="@+id/diceOne"
+            android:layout_weight="1"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignLeft="@+id/textView6"
+            android:layout_alignStart="@+id/textView6"
+
+        />
+
+        <com.example.user.myapplication.DieImageButton
+            android:id="@+id/diceTwo"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/launch"
+            android:layout_toEndOf="@+id/diceOne"
+            android:layout_toRightOf="@+id/diceOne"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true" />
+
+        <com.example.user.myapplication.DieImageButton
+            android:id="@+id/diceThree"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/launch"
+            android:layout_toEndOf="@+id/diceTwo"
+            android:layout_toRightOf="@+id/diceTwo"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true" />
+
+        <com.example.user.myapplication.DieImageButton
+            android:id="@+id/diceFour"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBaseline="@+id/diceThree"
+            android:layout_alignBottom="@+id/diceThree"
+            android:layout_toEndOf="@+id/diceThree"
+            android:layout_toRightOf="@+id/diceThree"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true" />
+
+        <com.example.user.myapplication.DieImageButton
+            android:id="@+id/diceFive"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignBaseline="@+id/diceFour"
+            android:layout_alignBottom="@+id/diceFour"
+            android:layout_toEndOf="@+id/diceFour"
+            android:layout_toRightOf="@+id/diceFour"
+            android:scaleType="centerInside"
+            android:adjustViewBounds="true" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/launch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_above="@+id/progressBar"
+        android:layout_gravity="bottom"
+        android:background="@drawable/launch_button"
+        android:onClick="throwDice"
+        android:soundEffectsEnabled="true"
+        android:text="Roll The Dice"
         android:textAlignment="center"
+        android:textSize="32sp"
+        android:textStyle="normal|bold|italic"
+        android:layout_centerHorizontal="true"
         android:textAllCaps="false" />
 
-    <TextView
-        android:text="TWO"
-        android:layout_width="150dp"
-        android:id="@+id/textView2"
-        android:layout_below="@+id/editText"
-        android:layout_toLeftOf="@+id/editText"
-        android:layout_toStartOf="@+id/editText"
-        android:layout_height="50dp"
-        android:textAlignment="center" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/dice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
-    <TextView
-        android:text="THREE"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignStart="@+id/textView4"
-        android:textAlignment="center" />
-
-    <TextView
-        android:text="FOUR"
-        android:layout_width="150dp"
-        android:id="@+id/textView4"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText3"
-        android:layout_toLeftOf="@+id/editText3"
-        android:layout_toStartOf="@+id/editText3"
-        android:textAlignment="center" />
-
-    <TextView
-        android:text="FIVE"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/editText4"
-        android:layout_toLeftOf="@+id/editText5"
-        android:layout_toStartOf="@+id/editText5"
-        android:textAlignment="center" />
-
-
-
-    <TextView
-        android:text="SIX"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:id="@+id/textView6"
-        android:layout_below="@+id/editText5"
-        android:layout_toLeftOf="@+id/editText6"
-        android:layout_toStartOf="@+id/editText6"
-        android:textAlignment="center" />
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText4"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText3"
-        android:layout_alignLeft="@+id/editText3"
-        android:layout_alignStart="@+id/editText3" />
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText5"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText4"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText6"
-        android:layout_width="200dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/editText5"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="Launch"
-        android:id="@+id/launch"
-        android:layout_width="300dp"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        android:textSize="50sp"
-        android:layout_height="100dp"
-        android:onClick="throwDice"
-        android:layout_below="@+id/diceOne"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="42dp" />
-
-    <Button
-        android:id="@+id/diceTwo"
-        android:background="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:elevation="0dp"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="dieActivation"
-        android:layout_marginRight="25dp"
-        android:layout_marginEnd="25dp"
-        android:layout_alignBaseline="@+id/diceFour"
-        android:layout_alignBottom="@+id/diceFour"
-        android:layout_toLeftOf="@+id/diceThree"
-        android:layout_toStartOf="@+id/diceThree" />
-
-    <Button
-        android:id="@+id/diceFour"
-        android:background="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="dieActivation"
-        android:layout_marginRight="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_below="@+id/editText6"
-        android:layout_toLeftOf="@+id/diceFive"
-        android:layout_toStartOf="@+id/diceFive"
-        android:layout_marginTop="18dp" />
-
-    <Button
-        android:id="@+id/diceOne"
-        android:background="#FFFFFF"
-        android:textAlignment="center"
-        android:textStyle="normal|bold"
-        android:textSize="24sp"
-        android:onClick="dieActivation"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:elevation="24dp"
-        android:layout_alignBaseline="@+id/diceTwo"
-        android:layout_alignBottom="@+id/diceTwo"
-        android:layout_alignLeft="@+id/textView6"
-        android:layout_alignStart="@+id/textView6" />
-
-    <Button
-        android:id="@+id/diceFive"
-        android:background="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="dieActivation"
-        android:layout_marginRight="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_toLeftOf="@+id/diceSix"
-        android:layout_toStartOf="@+id/diceSix"
-        android:layout_alignBottom="@+id/diceFour" />
-
-    <Button
-        android:id="@+id/diceSix"
-        android:background="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:onClick="dieActivation"
-        android:layout_alignBaseline="@+id/diceFive"
-        android:layout_alignBottom="@+id/diceFive"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:layout_width="40dp"
-        android:id="@+id/diceThree"
-        android:background="#FFFFFF"
-        android:textSize="24sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="center"
-        android:layout_height="40dp"
-        android:onClick="dieActivation"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_alignBaseline="@+id/diceFour"
-        android:layout_alignBottom="@+id/diceFour"
-        android:layout_toLeftOf="@+id/diceFour"
-        android:layout_toStartOf="@+id/diceFour" />
 
 </RelativeLayout>

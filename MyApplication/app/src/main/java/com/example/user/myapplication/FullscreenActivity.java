@@ -1,7 +1,10 @@
 package com.example.user.myapplication;
 
 import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -108,10 +111,11 @@ public class FullscreenActivity extends AppCompatActivity {
         findViewById(R.id.start).setOnTouchListener(mDelayHideTouchListener);
 
     }
-
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     public void start(View view) {
         Intent intent = new Intent(this, MainActivity_start.class);
-        startActivity(intent);
+        ActivityOptions options = ActivityOptions.makeScaleUpAnimation(view, 550, 50, view.getWidth(), view.getHeight());
+        startActivity(intent, options.toBundle());
     }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
