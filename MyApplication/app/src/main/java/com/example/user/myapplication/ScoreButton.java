@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
  * Created by Acrylon3 on 13/12/2016.
  */
 
-public class ScoreButton extends Button{
+public class ScoreButton extends Button implements ConstructorOverrider , IsoundMaker{
 
     public ScoreButton(Context context) {
         super(context);
@@ -32,7 +32,8 @@ public class ScoreButton extends Button{
         ctorStuff();
     }
 
-    private void ctorStuff(){
+    @Override
+    public void ctorStuff(){
         turnInvisible();
         this.setPadding(0,0,0,0);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(6,6);
@@ -47,4 +48,8 @@ public class ScoreButton extends Button{
         this.setText(""+num);
     }
 
+    @Override
+    public void makeSound() {
+        //TODO
+    }
 }
