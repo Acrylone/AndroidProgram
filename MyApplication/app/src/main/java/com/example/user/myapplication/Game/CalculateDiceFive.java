@@ -36,6 +36,9 @@ public class CalculateDiceFive {
 
 
     //***Check if the number is repeating or not********************************************************
+    protected boolean isNumberOccuring(int numToSearch){
+        return findHowManyTimesRepeat(numToSearch) != 0;
+    }
     public boolean isRepetitionNumber(int repetingNumber, int minRepeatTimes) {
 
         int howManyTimes = findHowManyTimesRepeat(repetingNumber);
@@ -152,6 +155,8 @@ public class CalculateDiceFive {
         return YATZY_CLASSIC_POINTS;
 
     }
+
+
 }
 
 

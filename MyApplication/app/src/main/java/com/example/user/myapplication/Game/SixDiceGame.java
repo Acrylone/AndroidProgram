@@ -615,7 +615,7 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
     }
 
     public void showScoreStraightHigh(ScoreButton view) {
-        view.turnVisible(((CalculateDiceSix) calculateDiceFive).findStraightHighArcade(2, 6));
+        view.turnVisible(((CalculateDiceSix) calculateDiceFive).findStraightLowArcade(2, 6));
     }
 
     public void showScoreStraightFull(ScoreButton view) {
