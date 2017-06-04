@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "499673087629",
+    "firebase_url": "https://yatzy-80dda.firebaseio.com",
+    "project_id": "yatzy-80dda",
+    "storage_bucket": "yatzy-80dda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:499673087629:android:9b537403cc3f9ff9",
+        "android_client_info": {
+          "package_name": "com.example.user.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "499673087629-ggfpvcqd34didtq5cvc665ng3jc02ceg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2zDxS3TxbMRm-7Wm8aeQtdF5jd7YJ0ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

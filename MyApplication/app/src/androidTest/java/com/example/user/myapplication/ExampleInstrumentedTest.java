@@ -1,4 +1,4 @@
-package com.example.user.myapplication;
+package com.example.user.acrylon3;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

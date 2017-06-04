@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 public class ToastThrower {
     public static void throwToast(Context context, String s){
-        int duration = Toast.LENGTH_SHORT;
+        int duration = Toast.LENGTH_LONG;
 
         Toast toast = Toast.makeText(context,s, duration);
         toast.show();

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/help_bonus_container" >
+
+
+    <TextView
+        android:text=
+            "Make BONUS \n make 63 points or more ! \n\n If you reach this score you can obtain BONUS \n\n  of 50 points EXTRA !"
+        android:textColor="#FFFFFF"
+        android:textSize="25dp"
+        android:textAlignment="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/help_bonus"
+        android:background="@color/colorAccent"
+        android:layout_centerVertical="true" />
+
+
+</RelativeLayout>
