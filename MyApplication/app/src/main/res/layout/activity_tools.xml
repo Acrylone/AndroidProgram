@@ -4,39 +4,78 @@
     android:id="@+id/activity_tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bleuabstrait"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bleuabstrait"
     tools:context="com.example.user.myapplication.Menu.Navigation.ToolsActivity">
 
-
     <EditText
-        android:id="@+id/changeNickname"
+        android:id="@+id/nickname_change"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:fontFamily="sans-serif-smallcaps"
         android:maxLength="10"
-        android:text="@string/show_nickname"
-        android:textSize="24sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="30sp" />
+
+
+    <Button
+        android:id="@+id/changeNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nickname_change"
+        android:layout_centerHorizontal="true"
+        android:text="CHANGE NICKNAME" />
+
+    <Button
+        android:id="@+id/gotomenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/black_overlay"
+        android:onClick="backMainMenu"
+        android:text="APPLY"
+        android:textColor="#FFFFFF" />
+
+    <!--<com.facebook.login.widget.LoginButton-->
+        <!--android:id="@+id/loginButton"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="facebookLogin"-->
+        <!--android:layout_below="@+id/changeNickname"-->
+        <!--android:layout_centerHorizontal="true" />-->
+
+    <!--<com.google.android.gms.common.SignInButton-->
+        <!--android:id="@+id/btn_sign_in"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:onClick="googleLogin"-->
+        <!--android:layout_below="@+id/loginButton"-->
+        <!--android:layout_centerHorizontal="true" />-->
 
     <Button
         android:id="@+id/sound_on"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@mipmap/ic_no_sound"
-        android:soundEffectsEnabled="false"
-        android:layout_below="@+id/changeNickname"
+        android:layout_above="@+id/gotomenu"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@mipmap/ic_no_sound"
+        android:soundEffectsEnabled="false" />
 
     <!---->
     <!--<com.facebook.login.widget.LoginButton-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_centerHorizontal="true" />-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_centerVertical="true"-->
+    <!--android:layout_centerHorizontal="true" />-->
 
 
 </RelativeLayout>

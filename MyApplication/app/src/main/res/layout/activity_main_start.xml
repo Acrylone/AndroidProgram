@@ -43,6 +43,26 @@
             android:background="@drawable/howiplayyatzy"
             android:onClick="goRules" />
 
+        <TextView
+            android:focusable="true"
+            android:id="@+id/show_nickname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAllCaps="true"
+            android:textSize="24dp"
+            android:textColor="#FFFFFF"
+            android:textStyle="normal|bold"
+            android:fontFamily="casual" />
+        <!--android:background="#212121"-->
+
+
+        <!--<View-->
+            <!--android:layout_below="@+id/show_nickname"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="2dip"-->
+            <!--android:background="#FFFFFF" />-->
+
         <!--<ImageView-->
         <!--android:id="@+id/imageView"-->
         <!--android:layout_width="match_parent"-->

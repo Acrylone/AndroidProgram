@@ -1,6 +1,7 @@
 package com.example.user.myapplication.Menu;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,7 +41,7 @@ import com.facebook.login.widget.LoginButton;
 import static com.example.user.myapplication.R.id.nickname_edit;
 import static com.example.user.myapplication.R.id.show_nickname;
 
-public class MainActivity_Menu extends AppCompatActivity
+public class MainMenuActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     NavigationView navigationView = null;
@@ -48,6 +50,7 @@ public class MainActivity_Menu extends AppCompatActivity
     SharedPreferences.Editor editor;
     private static final String PREFS = "PREFS";
     private static final String PREFS_NAME = "PREFS_NAME";
+    private static final String USER_CONFIG = "USER_CONFIG";
     SharedPreferences sharedPreferences;
 
     EditText usernickname;
@@ -84,6 +87,12 @@ public class MainActivity_Menu extends AppCompatActivity
 //            getWindow().setLayout((int) (width * .8), (int) (height * .6));                   ////
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+        //load saved preferences
+//        editor = (SharedPreferences.Editor) getPreferences(MODE_PRIVATE);
+        viewusername = (TextView) findViewById(show_nickname);
+        sharedPreferences = getSharedPreferences(USER_CONFIG, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
 
         //**********Make a blink button New Game************************************************************
         final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
@@ -135,49 +144,23 @@ public class MainActivity_Menu extends AppCompatActivity
 
         //AlertDialog - Window Open in the start Menu Activity**************************************
 
-        sharedPreferences = getBaseContext().getSharedPreferences(PREFS, MODE_PRIVATE);
-
         //objectif : sauvegarder 1 seule fois le nom et l'age de l'utilisateur
 
         //pour cela, on commence par regarder si on a déjà des éléments sauvegardés
+        Log.i("sharedPreferences" , "saved: " + sharedPreferences.getString(PREFS_NAME , null));
         if (sharedPreferences.contains(PREFS_NAME)) {
 
-            nickname = sharedPreferences.getString(PREFS_NAME, null);
+            Log.i("sharedPreferences" , "found!!!: " + sharedPreferences.getString(PREFS_NAME , ""));
 
-            Toast.makeText(this, " name: " + nickname, Toast.LENGTH_SHORT).show();
-            viewusername = (TextView) findViewById(show_nickname);
-            viewusername.setText("Welcome " + nickname);
+            nickname = sharedPreferences.getString(PREFS_NAME, "");
+
+            Toast.makeText(this, " name: " + nickname, Toast.LENGTH_LONG).show();
+            viewusername.setText("   Welcome Back " + nickname);
+//            viewusername.setText("Welcome " + nickname);
 
         } else {
-            //si aucun utilisateur n'est sauvegardé, on ajouter [24,florent]
-//            sharedPreferences
-//                    .edit()
-//                    .putString(PREFS_NAME, "florent")
-//                    .apply();
-//            AlertDialog.Builder builderAlert = new AlertDialog.Builder(this);
-//            builderAlert.setTitle("Enter a Nickname");
-//            builderAlert.setIcon(R.drawable.dice3d);
-//            builderAlert.setView(view);
-//            builderAlert.setPositiveButton("CONFIRM", new DialogInterface.OnClickListener()
-//                    {
-//                        public void onClick(DialogInterface dialog, int idx) {
-//                            usernickname = (EditText) view.findViewById(nickname_edit);
-//                            nickname = usernickname.getText().toString();
-//                            sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
-//                            editor = sharedPreferences.edit();
-//                            editor.putString(PREFS_NAME, nickname);
-//                            editor.apply();
-//
-//                            viewusername = (TextView) findViewById(show_nickname);
-//                            viewusername.setText("Welcome " + nickname);
-//                        }
-//
-//                    }
-//
-//            );
-//
-//            AlertDialog alertDialog = builderAlert.create();
-//            alertDialog.show();
+            Log.i("sharedPreferences" , "not found!!!");
+
             AlertDialog.Builder builderAlert = new AlertDialog.Builder(this);
             builderAlert.setTitle("Enter a Nickname");
             builderAlert.setIcon(R.drawable.dice3d);
@@ -185,28 +168,26 @@ public class MainActivity_Menu extends AppCompatActivity
 
             builderAlert.setPositiveButton("FACEBOOK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    Intent i=new Intent(MainActivity_Menu.this, FacebookLogin.class);
+                    Intent i=new Intent(MainMenuActivity.this, FacebookLogin.class);
                     startActivity(i);
                 }
             });
-
-            builderAlert.setNegativeButton("GOOGLE", new DialogInterface.OnClickListener() {
+            builderAlert.setNegativeButton("GOOGLE",new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int id) {
-                    Intent i=new Intent(MainActivity_Menu.this, GoogleLogin.class);
+                    Intent i=new Intent(MainMenuActivity.this, GoogleLogin.class);
                     startActivity(i);
                 }
             });
 
             builderAlert.setNeutralButton("OK", new DialogInterface.OnClickListener()     {
                 public void onClick(DialogInterface dialog, int id) {
+                    Log.i("clicked" , "OK button");
                     usernickname = (EditText) view.findViewById(nickname_edit);
+
                     nickname = usernickname.getText().toString();
-                    sharedPreferences = getSharedPreferences(PREFS_NAME, 0);
-                    editor = sharedPreferences.edit();
                     editor.putString(PREFS_NAME, nickname);
                     editor.apply();
-
-                    viewusername = (TextView) findViewById(show_nickname);
+                    Log.i("sharedPreferences" , "saved: " + sharedPreferences.getString(PREFS_NAME , null));
                     viewusername.setText("Welcome " + nickname);
                 }
             });

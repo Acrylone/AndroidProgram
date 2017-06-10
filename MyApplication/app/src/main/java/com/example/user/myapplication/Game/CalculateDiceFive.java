@@ -91,7 +91,7 @@ public class CalculateDiceFive {
     public int findStraight(int start, int end) {
         int scoreCount = 0;
         for (int i = start; i <= end; i++) {
-            if (findHowManyTimesRepeat(i) != 1) {
+            if (!isNumberOccuring(i)) {
                 return 0;
             } else {
                 scoreCount += i;

@@ -207,12 +207,6 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(), Rules.class);
                 startActivity(i);
-//                Toast toast = new Toast(getApplicationContext());
-//                toast.setGravity(Gravity.NO_GRAVITY, 550, 400);
-//                toast.setDuration(Toast.LENGTH_LONG);
-//                toast.setView(layout);
-//                toast.show();
-
             }
         });
 
@@ -611,11 +605,11 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
     }
 
     public void showScoreStraightLow(ScoreButton view) {
-        view.turnVisible(((CalculateDiceSix) calculateDiceFive).findStraightLowArcade(1,5));
+        view.turnVisible((calculateDiceFive).findStraight(1,5));
     }
 
     public void showScoreStraightHigh(ScoreButton view) {
-        view.turnVisible(((CalculateDiceSix) calculateDiceFive).findStraightLowArcade(2, 6));
+        view.turnVisible(( calculateDiceFive).findStraight(2, 6));
     }
 
     public void showScoreStraightFull(ScoreButton view) {

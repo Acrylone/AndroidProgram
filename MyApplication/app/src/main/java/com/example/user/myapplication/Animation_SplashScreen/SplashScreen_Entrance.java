@@ -10,7 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.widget.VideoView;
 
-import com.example.user.myapplication.Menu.MainActivity_Menu;
+import com.example.user.myapplication.Menu.MainMenuActivity;
 import com.example.user.myapplication.R;
 
 public class SplashScreen_Entrance extends AppCompatActivity {
@@ -50,7 +50,7 @@ public class SplashScreen_Entrance extends AppCompatActivity {
     private void jump() {
         if (isFinishing())
             return;
-        startActivity(new Intent(this, MainActivity_Menu.class));
+        startActivity(new Intent(this, MainMenuActivity.class));
         finish();
     }
 }

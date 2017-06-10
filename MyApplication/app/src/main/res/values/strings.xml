@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"><tab><center>YatzY</center></tab></string>
+    <string name="app_name">YatzY</string>
     <string name="title_activity_main_start"><tab><center></center></tab></string>
     <string name="Roll_The_Dice">Roll The Dice</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>

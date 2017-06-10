@@ -137,7 +137,7 @@
                 android:paddingLeft="@dimen/text_number"
                 android:text="FIVE"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <com.example.user.myapplication.Game.ScoreButton
@@ -159,7 +159,7 @@
                 android:paddingLeft="@dimen/text_number"
                 android:text="SIX"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
+                android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <com.example.user.myapplication.Game.ScoreButton
@@ -181,7 +181,7 @@
                 android:paddingLeft="@dimen/text_number"
                 android:text="TOTAL"
                 android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
+                android:textSize="25dp"
                 android:textStyle="normal|bold" />
 
             <com.example.user.myapplication.Game.ScoreButton

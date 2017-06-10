@@ -5,23 +5,23 @@
     android:background="@drawable/headercolor"
     tools:context="com.example.user.myapplication.Menu.ShowNicknameFragment">
 
-    <TextView
-        android:focusable="true"
-        android:id="@+id/show_nickname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textSize="23sp"
-        android:textStyle="normal|bold"
-        android:fontFamily="casual" />
-    <!--android:background="#212121"-->
+    <!--<TextView-->
+        <!--android:focusable="true"-->
+        <!--android:id="@+id/show_nickname"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:textAlignment="center"-->
+        <!--android:textAllCaps="true"-->
+        <!--android:textColor="#FFFFFF"-->
+        <!--android:textSize="23sp"-->
+        <!--android:textStyle="normal|bold"-->
+        <!--android:fontFamily="casual" />-->
+    <!--&lt;!&ndash;android:background="#212121"&ndash;&gt;-->
 
 
-    <View
-    android:layout_below="@+id/show_nickname"
-    android:layout_width="wrap_content"
-    android:layout_height="2dip"
-    android:background="#FFFFFF" />
+    <!--<View-->
+    <!--android:layout_below="@+id/show_nickname"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="2dip"-->
+    <!--android:background="#FFFFFF" />-->
 </RelativeLayout>

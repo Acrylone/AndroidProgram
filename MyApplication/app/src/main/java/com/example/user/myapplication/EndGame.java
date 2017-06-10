@@ -1,7 +1,6 @@
 package com.example.user.myapplication;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,19 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.user.myapplication.Game.CalculateDiceFive;
 import com.example.user.myapplication.Game.FiveDiceGame;
 import com.example.user.myapplication.Game.ScoreButton;
 import com.example.user.myapplication.Menu.ChoiceGame;
-import com.example.user.myapplication.Menu.MainActivity_Menu;
-import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
-import com.facebook.share.model.ShareLinkContent;
+import com.example.user.myapplication.Menu.MainMenuActivity;
 import com.facebook.share.widget.ShareButton;
-import com.google.android.gms.ads.AdListener;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.InterstitialAd;
-
-import java.util.Timer;
 
 public class EndGame extends AppCompatActivity {
 
@@ -64,7 +55,7 @@ public class EndGame extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), MainActivity_Menu.class);
+                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
                 startActivity(i);
             }
 

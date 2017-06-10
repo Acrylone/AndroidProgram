@@ -41,19 +41,6 @@ public class CalculateDiceSix extends CalculateDiceFive {
         return 0;
     }
 
-    //****Function of Straight*********************************************************************
-    public int findStraightLowArcade(int start, int end) {
-        int scoreCount = 0;
-        for (int i = start; i <= end; i++) {
-            if (!isNumberOccuring(i)) {
-                return 0;
-            } else {
-                scoreCount += i;
-            }
-        }
-        return scoreCount;
-    }
-
     //****Function for 3+3******************************************************************************
     public int findthreeandthree() {
         HashSet<Integer> numbersSet = new HashSet<>();

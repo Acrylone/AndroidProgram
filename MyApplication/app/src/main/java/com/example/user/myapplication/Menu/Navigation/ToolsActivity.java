@@ -1,24 +1,108 @@
 package com.example.user.myapplication.Menu.Navigation;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.user.myapplication.FacebookLogin;
+import com.example.user.myapplication.GoogleLogin;
+import com.example.user.myapplication.Menu.ChoiceGame;
+import com.example.user.myapplication.Menu.MainMenuActivity;
+import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
 import com.example.user.myapplication.R;
+
+import static com.example.user.myapplication.R.id.backToMenu;
+import static com.example.user.myapplication.R.id.gotomenu;
+import static com.example.user.myapplication.R.id.nickname_edit;
+import static com.example.user.myapplication.R.id.show_nickname;
 
 public class ToolsActivity extends AppCompatActivity {
 
-//    final ToggleButton sound_on = (ToggleButton) findViewById(R.id.sound_on);
+    //    final ToggleButton sound_on = (ToggleButton) findViewById(R.id.sound_on);
 //    final ToggleButton sound_off = (ToggleButton) findViewById(R.id.sound_off);
+    SharedPreferences.Editor editor;
+    private static final String USER_CONFIG = "USER_CONFIG";
+    private static final String PREFS_NAME = "PREFS_NAME";
+
+    SharedPreferences sharedPreferences;
+
+    EditText usernickname;
+    Button changeNickname;
+    TextView viewusername;
+
+    String nickname;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tools);
+
+//        gotomenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent i = new Intent(getApplicationContext(), MainMenuActivity.class);
+//                startActivity(i);
+//            }
 //
+//
+//        });
+
+//        viewusername = (TextView) findViewById(show_nickname2);
+        sharedPreferences = getSharedPreferences(USER_CONFIG, Context.MODE_PRIVATE);
+        usernickname = (EditText) findViewById(R.id.nickname_change);
+        changeNickname = (Button) findViewById(R.id.changeNickname);
+        nickname = sharedPreferences.getString(PREFS_NAME, nickname);
+        usernickname.setText(nickname);
+
+        Toast.makeText(ToolsActivity.this, "Nickname : " + nickname, Toast.LENGTH_SHORT).show();
+
+        changeNickname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                nickname = usernickname.getText().toString();
+
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+
+                editor.putString(PREFS_NAME, nickname);
+                editor.apply();
+
+                Toast.makeText(ToolsActivity.this, "Nickname Changed to " + nickname, Toast.LENGTH_SHORT).show();
+
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(usernickname.getWindowToken(), 0);
+
+            }
+        });
+    }
+
+
+    public void backMainMenu(View view) {
+        Intent intent = new Intent(this, MainMenuActivity.class);
+        startActivity(intent);
+    }
+
+//    public void facebookLogin(View view) {
+//        Intent i = new Intent(ToolsActivity.this, FacebookLogin.class);
+//        startActivity(i);
+//    }
+//
+//    public void googleLogin(View view) {
+//        Intent i = new Intent(ToolsActivity.this, GoogleLogin.class);
+//        startActivity(i);
+//    }
+
 //        sound_on.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -36,5 +120,6 @@ public class ToolsActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-}
+
+
 }

@@ -19,31 +19,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         ///////////////////////////////////////////////////////////////////
-        <!-- <activity -->
-        <!-- android:name=".Animation_SplashScreen.SplashScreen_Entrance" -->
-        <!-- android:configChanges="keyboardHidden|orientation|screenSize" -->
-        <!-- android:screenOrientation="portrait" -->
-        <!-- android:theme="@style/AppTheme.NoActionBar"> -->
-        <!-- <intent-filter> -->
-        <!-- <action android:name="android.intent.action.MAIN" /> -->
+         <activity
+         android:name=".Animation_SplashScreen.SplashScreen_Entrance"
+         android:configChanges="keyboardHidden|orientation|screenSize"
+         android:screenOrientation="portrait"
+         android:theme="@style/AppTheme.NoActionBar">
+         <intent-filter>
+         <action android:name="android.intent.action.MAIN" />
 
 
-        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-        <!-- </intent-filter> -->
-        <!-- </activity> -->
+         <category android:name="android.intent.category.LAUNCHER" />
+         </intent-filter>
+         </activity>
 
         /////////////////////////////////////////////////////////////////////
         <activity
-            android:name=".Menu.MainActivity_Menu"
+            android:name=".Menu.MainMenuActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_main_start"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
         ///////////////////////////////////////////////////////////////////
         <meta-data

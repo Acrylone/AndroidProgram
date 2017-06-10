@@ -29,29 +29,26 @@
         <!--android:layout_centerHorizontal="true" />-->
 
     <Button
-        android:id="@+id/backToMenu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back To Menu"
-        android:background="@color/com_facebook_blue"
-        android:layout_below="@+id/finalscore"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="36dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="28dp" />
-
-    <Button
         android:id="@+id/otherGame"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:text="Other game"
         android:background="@color/com_facebook_blue"
-        android:layout_alignBaseline="@+id/backToMenu"
-        android:layout_alignBottom="@+id/backToMenu"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginEnd="40dp" />
+        android:layout_below="@+id/finalscore"
+        android:layout_alignLeft="@+id/backToMenu"
+        android:layout_alignStart="@+id/backToMenu"
+        android:layout_marginTop="11dp" />
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="Back To Menu"
+        android:background="@color/com_facebook_blue"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="36dp" />
+
+
 
 </RelativeLayout>
