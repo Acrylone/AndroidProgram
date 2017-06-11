@@ -1,32 +1,19 @@
 package com.example.user.myapplication.Menu.Navigation;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.ToggleButton;
 
-import com.example.user.myapplication.FacebookLogin;
-import com.example.user.myapplication.GoogleLogin;
-import com.example.user.myapplication.Menu.ChoiceGame;
 import com.example.user.myapplication.Menu.MainMenuActivity;
-import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
 import com.example.user.myapplication.R;
-
-import static com.example.user.myapplication.R.id.backToMenu;
-import static com.example.user.myapplication.R.id.gotomenu;
-import static com.example.user.myapplication.R.id.nickname_edit;
-import static com.example.user.myapplication.R.id.show_nickname;
 
 public class ToolsActivity extends AppCompatActivity {
 

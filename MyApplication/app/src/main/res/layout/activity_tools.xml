@@ -23,7 +23,6 @@
         android:textColor="#FFFFFF"
         android:textSize="30sp" />
 
-
     <Button
         android:id="@+id/changeNickname"
         android:layout_width="wrap_content"

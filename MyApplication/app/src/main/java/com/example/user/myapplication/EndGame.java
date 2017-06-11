@@ -1,17 +1,21 @@
 package com.example.user.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.user.myapplication.Game.FiveDiceGame;
 import com.example.user.myapplication.Game.ScoreButton;
 import com.example.user.myapplication.Menu.ChoiceGame;
 import com.example.user.myapplication.Menu.MainMenuActivity;
+import com.example.user.myapplication.Menu.Navigation.ToolsActivity;
 import com.facebook.share.widget.ShareButton;
 
 public class EndGame extends AppCompatActivity {
@@ -27,6 +31,11 @@ public class EndGame extends AppCompatActivity {
     public static int scoreTotal;
 
     private ShareButton shareButton;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
+
+    private static final String PREFS_SCORE = "PREFS_SCORE";
+    private static final String USER_CONFIG = "USER_CONFIG";
 
 
     @Override
@@ -72,7 +81,7 @@ public class EndGame extends AppCompatActivity {
             public void run() {
                 while (Running) {
                     try {
-                        Thread.sleep(20);
+                        Thread.sleep(15);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -92,6 +101,14 @@ public class EndGame extends AppCompatActivity {
         };
 
         new Thread(runnable).start();
+
+        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("key", scoreTotal);
+        editor.commit();
+
+        Toast.makeText(EndGame.this, "Score Total " + scoreTotal, Toast.LENGTH_SHORT).show();
+
 
 
 //        shareButton = (ShareButton)
