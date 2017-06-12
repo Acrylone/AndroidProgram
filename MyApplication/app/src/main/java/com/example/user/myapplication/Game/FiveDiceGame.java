@@ -2,28 +2,41 @@
 
 package com.example.user.myapplication.Game;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.user.myapplication.EndGame;
+import com.example.user.myapplication.Game.Screenshot;
 import com.example.user.myapplication.InterstitialGoogle;
 import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
 import com.example.user.myapplication.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.formats.NativeAd;
+//import com.google.android.gms.games.internal.game.Screenshot;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +52,8 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     private boolean bonusGone = false;
     private boolean isBonus = false;
 
+    private View main;
+    private ImageView imageView;
 
     private int num_of_launches = 0;
 
@@ -582,10 +597,10 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         }
         showScoreTotal((ScoreButton) findViewById(R.id.SCORE_TOTAL));
 
-        for (ScoreButton scoreButton : scoreButtonsLeft){
-            if(scoreButton.isEnabled()==false){
-                checkSbEnabled+=1;
-                if(checkSbEnabled == 6){
+        for (ScoreButton scoreButton : scoreButtonsLeft) {
+            if (scoreButton.isEnabled() == false) {
+                checkSbEnabled += 1;
+                if (checkSbEnabled == 6) {
                     view.setEnabled(false);
                 }
             }
@@ -593,11 +608,55 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     }
 
 
-//**************************************************************************************************
+    //**************************************************************************************************
+    public Bitmap takeScreenshot() {
+        View rootView = findViewById(android.R.id.content).getRootView();
+        rootView.setDrawingCacheEnabled(true);
+        return rootView.getDrawingCache();
+    }
 
+    public void saveBitmap(Bitmap bitmap) {
+        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
+        FileOutputStream fos;
+        try {
+            fos = new FileOutputStream(imagePath);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+            fos.flush();
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.e("GREC", e.getMessage(), e);
+        } catch (IOException e) {
+            Log.e("GREC", e.getMessage(), e);
+        }
+    }
+
+    public static Bitmap getScreenShot(View view) {
+        View screenView = view.getRootView();
+        screenView.setDrawingCacheEnabled(true);
+        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+        screenView.setDrawingCacheEnabled(false);
+        return bitmap;
+    }
+
+    public static void store(Bitmap bm, String fileName){
+        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
+        File dir = new File(dirPath);
+        if(!dir.exists())
+            dir.mkdirs();
+        File file = new File(dirPath, fileName);
+        try {
+            FileOutputStream fOut = new FileOutputStream(file);
+            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+            fOut.flush();
+            fOut.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     //*****Class of operations when the player clicked on one of the cell of scores ********************
     public void clickScoreButton(View view) {
+
 
         if (alreadyThrown == 0) {
             return;
@@ -614,12 +673,17 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         clickcount = 0;
 
 //******/Determinate the end of the game************************************************************
+
         num_of_launches++;
         if (num_of_launches == NUM_OF_THROWING_MAX) {
 
             //update the next activity with the score
-            String finalScoreStr = ((ScoreButton)findViewById(R.id.SCORE_TOTAL)).getText().toString();
+            String finalScoreStr = ((ScoreButton) findViewById(R.id.SCORE_TOTAL)).getText().toString();
             EndGame.scoreTotal = Integer.valueOf(finalScoreStr);
+
+            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
+            imageView.setImageBitmap(screenshot);
 
             startActivity(new Intent(this, EndGame.class));
         }

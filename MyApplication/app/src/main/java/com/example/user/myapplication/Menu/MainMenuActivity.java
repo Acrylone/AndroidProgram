@@ -91,7 +91,7 @@ public class MainMenuActivity extends AppCompatActivity
         //load saved preferences
 //        editor = (SharedPreferences.Editor) getPreferences(MODE_PRIVATE);
         viewusername = (TextView) findViewById(show_nickname);
-        sharedPreferences = getSharedPreferences(USER_CONFIG, MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("GAME_DATA", MODE_PRIVATE);
         editor = sharedPreferences.edit();
 
         //**********Make a blink button New Game************************************************************

@@ -47,7 +47,7 @@ public class ToolsActivity extends AppCompatActivity {
 //        });
 
 //        viewusername = (TextView) findViewById(show_nickname2);
-        sharedPreferences = getSharedPreferences(USER_CONFIG, Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
         usernickname = (EditText) findViewById(R.id.nickname_change);
         changeNickname = (Button) findViewById(R.id.changeNickname);
         nickname = sharedPreferences.getString(PREFS_NAME, nickname);

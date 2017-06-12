@@ -102,13 +102,32 @@ public class EndGame extends AppCompatActivity {
 
         new Thread(runnable).start();
 
-        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("key", scoreTotal);
-        editor.commit();
+//        SharedPreferences prefs = this.getSharedPreferences("myPrefsKey", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putInt("key", scoreTotal);
+//        editor.commit();
 
         Toast.makeText(EndGame.this, "Score Total " + scoreTotal, Toast.LENGTH_SHORT).show();
 
+        TextView highScoreView = (TextView)findViewById(R.id.highscoreview);
+
+        sharedPreferences = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+        int highScore = sharedPreferences.getInt("HIGH_SCORE", 0);
+        editor = sharedPreferences.edit();
+        editor.putInt("Score", scoreTotal);
+        editor.commit();
+
+        if (scoreTotal > highScore){
+            highScoreView.setText("High Score : " + scoreTotal);
+
+            //save
+            editor = sharedPreferences.edit();
+            editor.putInt("HIGH_SCORE", scoreTotal);
+            editor.commit();
+
+        }else{
+            highScoreView.setText("High Score : " + highScore);
+        }
 
 
 //        shareButton = (ShareButton)
@@ -120,11 +139,11 @@ public class EndGame extends AppCompatActivity {
 //         * lui affiche une vue qui lui permet de partager le lien
 //         * qu'on a mis <img draggable="false" class="emoji" alt="🙂" src="https://s.w.org/images/core/emoji/2.2.1/svg/1f642.svg">
 //         */
-//        ShareLinkContent content = new ShareLinkContent.Builder()
+//        ShareLinkContent screenshot = new ShareLinkContent.Builder()
 //                .setContentUrl(Uri.parse("http://www.android-pour-tous.com/"))
 //                .build();
 //
-//        shareButton.setShareContent(content);
+//        shareButton.setShareContent(screenshot);
 
     }
 

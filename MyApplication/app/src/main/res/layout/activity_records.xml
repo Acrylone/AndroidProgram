@@ -19,10 +19,44 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true">
-////////////////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////////////////
+
+        <TableRow android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/TitleNickname"
+                android:fontFamily="casual"
+                android:paddingLeft="@dimen/text_number"
+                android:text="NAME"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/TitleScore"
+                android:fontFamily="casual"
+                android:paddingLeft="@dimen/text_number"
+                android:text="SCORE"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="normal|bold" />
+
+            <TextView
+                android:id="@+id/TitleCategory"
+                android:fontFamily="casual"
+                android:paddingLeft="@dimen/text_number"
+                android:text="GAME"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="25dp"
+                android:textStyle="normal|bold" />
+        </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
 
         <TableRow android:layout_weight="1">
 
@@ -36,22 +70,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore1"
+                android:id="@+id/ScoreOne"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreOne"
+                android:id="@+id/TitleScore1"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus1"
@@ -61,12 +96,14 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
-////////////////////////////////////////////////////////////////////
+            android:layout_height="3dip"
+            android:background="#D51111" />
+        ////////////////////////////////////////////////////////////////////
 
         <TableRow android:layout_weight="1">
+
             <TextView
                 android:id="@+id/nicknameTwo"
                 android:fontFamily="casual"
@@ -77,22 +114,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore2"
+                android:id="@+id/ScoreTwo"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreTwo"
+                android:id="@+id/TitleScore2"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789 "
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus2"
@@ -101,11 +139,14 @@
                 android:layout_gravity="center_vertical"
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
+
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ///////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -118,22 +159,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore3"
+                android:id="@+id/ScoreThree"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreThree"
+                android:id="@+id/TitleScore3"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus3"
@@ -143,10 +185,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -159,22 +203,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore4"
+                android:id="@+id/ScoreFour"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreFour"
+                android:id="@+id/TitleScore4"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus4"
@@ -184,10 +229,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -200,22 +247,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore5"
+                android:id="@+id/ScoreFive"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreFive"
+                android:id="@+id/TitleScore5"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus5"
@@ -225,10 +273,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -241,22 +291,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore6"
+                android:id="@+id/ScoreSix"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreSix"
+                android:id="@+id/TitleScore6"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus6"
@@ -266,10 +317,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -282,22 +335,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore7"
+                android:id="@+id/ScoreSeven"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreSeven"
+                android:id="@+id/TitleScore7"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus7"
@@ -307,10 +361,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -323,22 +379,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore8"
+                android:id="@+id/ScoreEight"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreEight"
+                android:id="@+id/TitleScore8"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus8"
@@ -348,10 +405,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -364,22 +423,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore9"
+                android:id="@+id/ScoreNine"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreNine"
+                android:id="@+id/TitleScore9"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus9"
@@ -389,10 +449,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -405,22 +467,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore10"
+                android:id="@+id/ScoreTen"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreTen"
+                android:id="@+id/TitleScore10"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus10"
@@ -430,10 +493,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -446,22 +511,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore11"
+                android:id="@+id/ScoreEleven"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreEleven"
+                android:id="@+id/TitleScore11"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus11"
@@ -471,10 +537,12 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
-            android:layout_height="5dip"
-            android:background="#D50000" />
+            android:layout_height="3dip"
+            android:background="#D51111" />
         ////////////////////////////////////////////////////////////////////
+
         <TableRow android:layout_weight="1">
 
             <TextView
@@ -487,22 +555,23 @@
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/TitleScore12"
+                android:id="@+id/ScoreTwelve"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="SCORE : "
+                android:text="123456789"
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
             <TextView
-                android:id="@+id/ScoreTwelve"
+                android:id="@+id/TitleScore12"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text=" 123456789"
+                android:text="5/6 dices  "
                 android:textColor="@color/colorPrimary"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
+
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/ScoreOnePlus12"
@@ -512,6 +581,7 @@
                 app:backgroundTint="@color/com_facebook_blue"
                 app:srcCompat="@drawable/cast_ic_expanded_controller_play" />
         </TableRow>
+
         <View
             android:layout_height="5dip"
             android:background="#D50000" />

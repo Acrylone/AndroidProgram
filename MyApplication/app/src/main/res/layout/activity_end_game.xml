@@ -11,14 +11,40 @@
     tools:context="com.example.user.myapplication.EndGame">
 
     <TextView
+        android:id="@+id/gameover"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:textColor="@color/com_facebook_blue"
+        android:textAlignment="center"
+        android:text="Game Over"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
         android:id="@+id/finalscore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_below="@+id/gameover"
         android:fontFamily="casual"
         android:textColor="@color/com_facebook_blue"
         android:textAlignment="center"
         android:textSize="150dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/highscoreview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_below="@+id/finalscore"
+        android:fontFamily="casual"
+        android:textColor="@color/com_facebook_blue"
+        android:textAlignment="center"
+        android:textSize="30dp"
         android:textStyle="bold" />
 
     <!--<com.facebook.share.widget.ShareButton-->
@@ -34,10 +60,10 @@
         android:layout_height="wrap_content"
         android:text="Other game"
         android:background="@color/com_facebook_blue"
-        android:layout_below="@+id/finalscore"
+        android:layout_above="@+id/backToMenu"
         android:layout_alignLeft="@+id/backToMenu"
         android:layout_alignStart="@+id/backToMenu"
-        android:layout_marginTop="11dp" />
+        android:layout_marginBottom="13dp" />
 
     <Button
         android:id="@+id/backToMenu"
