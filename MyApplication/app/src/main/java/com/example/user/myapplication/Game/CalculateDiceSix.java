@@ -53,7 +53,8 @@ public class CalculateDiceSix extends CalculateDiceFive {
 
             //find if really 3 and 3
             int repetitions = findHowManyTimesRepeat(dice[0].getValue());
-            if ((repetitions == 2) || (repetitions == 3)) {
+            if ((repetitions == 3)){
+//                if ((repetitions == 2) || (repetitions == 3)) {
                 int counter = 0;
                 for (DieImageButton dib : dice) {
                     counter += dib.getValue();
@@ -64,7 +65,6 @@ public class CalculateDiceSix extends CalculateDiceFive {
             } else {
                 return 0;
             }
-
         }
         return 0;
     }

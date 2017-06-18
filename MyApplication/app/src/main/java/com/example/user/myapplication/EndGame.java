@@ -35,7 +35,6 @@ public class EndGame extends AppCompatActivity {
     SharedPreferences.Editor editor;
 
     private static final String PREFS_SCORE = "PREFS_SCORE";
-    private static final String USER_CONFIG = "USER_CONFIG";
 
 
     @Override
@@ -114,7 +113,7 @@ public class EndGame extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
         int highScore = sharedPreferences.getInt("HIGH_SCORE", 0);
         editor = sharedPreferences.edit();
-        editor.putInt("Score", scoreTotal);
+        editor.putInt("PREFS_SCORE", scoreTotal);
         editor.commit();
 
         if (scoreTotal > highScore){

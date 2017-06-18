@@ -232,9 +232,10 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/pairview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
-                android:text="PAIRS"
+                android:text= "PAIRS"
                 android:textColor="@color/colorPrimary"
                 android:textSize="15dp"
                 android:textStyle="normal|bold" />
@@ -255,6 +256,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/twopairview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="2 PAIRS"
@@ -279,6 +281,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/threeofkindview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="3 OF KIND"
@@ -303,6 +306,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/fourofkindview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="4 OF KIND"
@@ -327,6 +331,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/lowstraightview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="1-2-3-4-5"
@@ -351,6 +356,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/highstraightview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="2-3-4-5-6"
@@ -374,6 +380,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/fullhouseview"
                 android:layout_marginLeft="3dp"
                 android:fontFamily="casual"
                 android:text="FULL HOUSE"
@@ -398,6 +405,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/chanceview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="CHANCE"
@@ -422,6 +430,7 @@
         <TableRow android:layout_weight="1">
 
             <TextView
+                android:id="@+id/yatzyview"
                 android:layout_marginLeft="5dp"
                 android:fontFamily="casual"
                 android:text="YATZY"

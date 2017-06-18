@@ -5,6 +5,8 @@ package com.example.user.myapplication.Game;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -18,8 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.myapplication.EndGame;
@@ -47,7 +52,11 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     private static final int NUM_OF_DICE = 5;
     private static final int NUM_OF_ALLOWED_THROWS = 3;
 
+    private static final int INC_PROGRESS_BAR = 7;
+
     private int alreadyThrown;
+
+    protected boolean isAbleToClickScoreButton;
 
     private boolean bonusGone = false;
     private boolean isBonus = false;
@@ -70,6 +79,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.five_dice_game);
+
 
         //******//ProgressBar function**********************************************************************
         progressBar = (ProgressBar) findViewById(R.id.progressbarfivedice);
@@ -117,9 +127,82 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         pen_chance.setOnClickListener(this);
         final Button pen_yatzy = (Button) findViewById(R.id.YATZY);
         pen_yatzy.setOnClickListener(this);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////
+        TextView pairs = (TextView) findViewById(R.id.pairview);
+        pairs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupPairs(view);
+            }
+        });
+        TextView twopairs = (TextView) findViewById(R.id.twopairview);
+        twopairs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupTwoPairs(view);
+            }
+        });
+        TextView threeofkind = (TextView) findViewById(R.id.threeofkindview);
+        threeofkind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupThreeOfKind(view);
+            }
+        });
+        TextView fourofkind = (TextView) findViewById(R.id.fourofkindview);
+        fourofkind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupFourOfKind(view);
+            }
+        });
+        TextView lowstraight = (TextView) findViewById(R.id.lowstraightview);
+        lowstraight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupLowStraight(view);
+            }
+        });
+        TextView highstraight = (TextView) findViewById(R.id.highstraightview);
+        highstraight.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupHighStraight(view);
+            }
+        });
+        TextView fullhouse = (TextView) findViewById(R.id.fullhouseview);
+        fullhouse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupFullHouse(view);
+            }
+        });
+        TextView chance = (TextView) findViewById(R.id.chanceview);
+        chance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupChance(view);
+            }
+        });
+        TextView yatzy = (TextView) findViewById(R.id.yatzyview);
+        yatzy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupYatzy(view);
+            }
+        });
+        TextView bonus = (TextView) findViewById(R.id.bonusview);
+        bonus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showPopupBonus(view);
+            }
+        });
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         alreadyThrown = 0;
+        isAbleToClickScoreButton = false;
 
         //Create array with 5 cells - and adapt each cell with the appropriate die
         dice = new DieImageButton[NUM_OF_DICE];
@@ -214,7 +297,6 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 //                toast.setDuration(Toast.LENGTH_LONG);
 //                toast.setView(layout);
 //                toast.show();
-
             }
         });
 
@@ -256,10 +338,87 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 //**************************************************************************************************
 //**************************************************************************************************
 
+    public void showPopupPairs(final View anchorView) {
+        String s = "*Pairs* : [ 6 ] [ 6 ] [ 1 ] [ 3 ] [ 4 ] \nSum of 2 dice with the same number - Score : 12";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupTwoPairs(final View anchorView) {
+        String s = "*2 Pairs* : [ 5 ] [ 5 ] [ 6 ] [ 6 ] [ 4 ] \nSum of 2 dice twice with the same number - Score : 22";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupThreeOfKind(final View anchorView) {
+        String s = "*3 of Kind* : [ 4 ] [ 4 ] [ 4 ] [ 3 ] [ 6 ] \nAt least 3 dice the same - Score : 12";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupFourOfKind(final View anchorView) {
+        String s = "*4 of Kind* : [ 2 ] [ 2 ] [ 2 ] [ 2 ] [ 6 ] \nAt least 4 dice the same - Score : 8";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupLowStraight(final View anchorView) {
+        String s = "*Low Straight* : [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] \n5 sequential dice between 1 - 5 - Score : 15";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupHighStraight(final View anchorView) {
+        String s = "*High Straight* : [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ 6 ] \n5 sequential dice between 2 - 6 - Score : 20";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupFullHouse(final View anchorView) {
+        String s = "*Full House* : [ 2 ] [ 2 ] [ 5 ] [ 5 ] [ 5 ] \n3 of one number and 2 of another - Score : 19";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupChance(final View anchorView) {
+        String s = "*Chance* : [ 3 ] [ 6 ] [ 4 ] [ 5 ] [ 1 ] \nThe sum of all dice - Score : 19";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupYatzy(final View anchorView) {
+        String s = "*Yatzy* : [ 6 ] [ 6 ] [ 6 ] [ 6 ] [ 6 ] \nSum of 5 dice with the same number - Score : 30";
+        showPopupGeneral(anchorView , s);
+    }
+    public void showPopupBonus(final View anchorView) {
+        String s = "*BONUS* :\n Try to reach 63 points or more, and you receive a bonus of 50 points bonus!";
+        showPopupGeneral(anchorView , s);
+    }
+
+
+    public void showPopupGeneral(final View anchorView , String showOnScreen) {
+
+        View popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
+
+        PopupWindow popupWindow = new PopupWindow(popupView,
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+
+        TextView tv = (TextView) popupView.findViewById(R.id.tv);
+
+        tv.setText(showOnScreen);
+//        tv.setAllCaps(true);
+        tv.setTextColor(Color.RED);
+
+        popupWindow.setFocusable(true);
+        popupView.setBackgroundColor(Color.WHITE);
+
+        // If you need the PopupWindow to dismiss when when touched outside
+        popupWindow.setBackgroundDrawable(new ColorDrawable());
+
+        int location[] = new int[2];
+
+        // Get the View's(the one that was clicked in the Fragment) location
+        anchorView.getLocationOnScreen(location);
+
+        // Using location, the PopupWindow will be displayed right under anchorView
+        popupWindow.showAtLocation(anchorView, Gravity.NO_GRAVITY,
+                location[0], location[1] + anchorView.getHeight());
+
+    }
+
 
     //*****On Click Void to make sound on Score Button**************************************************
     @Override
     public void onClick(View v) {
+        if(!isAbleToClickScoreButton) {
+            Toast.makeText(this , "throw dice first!" , Toast.LENGTH_LONG).show();
+            return;
+        }
+
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.pen);
         final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.pen2);
         final MediaPlayer mp3 = MediaPlayer.create(this, R.raw.pen3);
@@ -272,77 +431,54 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
             case R.id.SCORE_ONE:
                 mp.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.SCORE_TWO:
                 mp2.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.SCORE_THREE:
                 mp3.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.SCORE_FOUR:
                 mp4.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.SCORE_FIVE:
                 mp5.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.SCORE_SIX:
                 mp6.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.PAIR:
                 mp.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.TWOPAIRS:
                 mp2.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.THREEOFKIND:
                 mp3.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.FOUROFKIND:
                 mp4.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.STRAIGHTLOW:
                 mp5.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.STRAIGHTHIGH:
                 mp6.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.FULLHOUSE:
                 mp2.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             case R.id.CHANCE:
                 mp3.start();
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                clickScoreButton(v);
                 break;
             default:
                 break;
         }
+
+        progressBar.setProgress(progressBar.getProgress() + INC_PROGRESS_BAR);
+        clickScoreButton(v);
+
+        isAbleToClickScoreButton = false;
 
     }
 
@@ -420,6 +556,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
     //*****Function to active update and limit the rolling dice and showing result dice*****************
     public void throwDice(View view) {
+        isAbleToClickScoreButton = true;
 
         if (alreadyThrown < NUM_OF_ALLOWED_THROWS) {
 
@@ -681,9 +818,9 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
             String finalScoreStr = ((ScoreButton) findViewById(R.id.SCORE_TOTAL)).getText().toString();
             EndGame.scoreTotal = Integer.valueOf(finalScoreStr);
 
-            ImageView imageView = (ImageView)findViewById(R.id.imageView);
-            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
-            imageView.setImageBitmap(screenshot);
+//            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+//            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
+//            imageView.setImageBitmap(screenshot);
 
             startActivity(new Intent(this, EndGame.class));
         }
@@ -703,9 +840,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         //Do automatically dice Throw
         throwDice(activeButton);
     }
+
+
 }
 
 //***End of the Activity****************************************************************************
+
 
 
 

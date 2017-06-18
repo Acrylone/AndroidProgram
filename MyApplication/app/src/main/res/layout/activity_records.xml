@@ -82,9 +82,9 @@
                 android:id="@+id/TitleScore1"
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
-                android:text="5/6 dices  "
+                android:text="5/6 dices "
                 android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 android:textStyle="normal|bold" />
 
 

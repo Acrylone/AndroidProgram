@@ -154,8 +154,8 @@ public class MainMenuActivity extends AppCompatActivity
 
             nickname = sharedPreferences.getString(PREFS_NAME, "");
 
-            Toast.makeText(this, " name: " + nickname, Toast.LENGTH_LONG).show();
-            viewusername.setText("   Welcome Back " + nickname);
+            Toast.makeText(this, " Name: " + nickname, Toast.LENGTH_LONG).show();
+            viewusername.setText("   Welcome Back \n" + nickname);
 //            viewusername.setText("Welcome " + nickname);
 
         } else {
@@ -188,7 +188,7 @@ public class MainMenuActivity extends AppCompatActivity
                     editor.putString(PREFS_NAME, nickname);
                     editor.apply();
                     Log.i("sharedPreferences" , "saved: " + sharedPreferences.getString(PREFS_NAME , null));
-                    viewusername.setText("Welcome " + nickname);
+                    viewusername.setText("Welcome \n" + nickname);
                 }
             });
             AlertDialog alert = builderAlert.create();

@@ -58,19 +58,19 @@
         android:id="@+id/otherGame"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Other game"
-        android:background="@color/com_facebook_blue"
+
+        android:background="@drawable/othergame"
         android:layout_above="@+id/backToMenu"
         android:layout_alignLeft="@+id/backToMenu"
         android:layout_alignStart="@+id/backToMenu"
-        android:layout_marginBottom="13dp" />
+        android:layout_marginBottom="13dp"/>
+        <!--android:text="Other game"/>-->
 
     <Button
         android:id="@+id/backToMenu"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="Back To Menu"
-        android:background="@color/com_facebook_blue"
+        android:background="@drawable/backtomenu2"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="36dp" />
