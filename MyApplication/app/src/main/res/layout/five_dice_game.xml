@@ -15,6 +15,469 @@
     android:paddingTop="@dimen/activity_vertical_margin"
 
     <!-- view for AdMob Banner Ad -->
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rollingdice"
+        android:layout_below="@+id/adMobView"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TableLayout
+                android:id="@+id/leftlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/leftpanel">
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/txtOne"
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="ONE"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+                    android:layout_marginLeft="5dp"
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_ONE"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textAlignment="center"
+                        android:textSize="25dp" />
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#EF5350" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="TWO"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_TWO"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textAlignment="center"
+                        android:textSize="25dp" />
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#F44336" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="THREE"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_THREE"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textAlignment="center"
+                        android:textSize="25dp" />
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#E53935" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="FOUR"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_FOUR"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#D32F2F" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="FIVE"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_FIVE"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                </TableRow>
+
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#C62828" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="SIX"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_SIX"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#B71C1C" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:layout_gravity="center"
+                        android:fontFamily="casual"
+                        android:paddingLeft="@dimen/text_number"
+                        android:text="TOTAL"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="25dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_TOTAL"
+                        android:layout_marginRight="20dp"
+                        android:background="@android:color/transparent"
+                        android:textSize="25dp" />
+                </TableRow>
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/bonusview"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="-15dp"
+                        android:fontFamily="casual"
+                        android:text="BONUS \n (+50)"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20dp"
+                        android:textStyle="normal|bold" />
+                    <!--android:layout_marginLeft="5dp"-->
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/SCORE_BONUS"
+                        android:background="@android:color/transparent"
+                        android:clickable="false"
+                        android:textSize="25dp" />
+
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#B71C1C" />-->
+
+
+            </TableLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="3">
+
+            <FrameLayout
+                android:id="@+id/layoutcenter"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressbarfivedice"
+                    style="@android:style/Widget.ProgressBar.Horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:progressDrawable="@drawable/progress_drawable_vertical" />
+
+            </FrameLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2">
+
+            <TableLayout
+                android:id="@+id/rightlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rightpanel">
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/pairview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="PAIRS"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/PAIR"
+                        android:layout_marginRight="25dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    <!--android:drawableLeft="@drawable/pen"/>-->
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#EF5350" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/twopairview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="2 PAIRS"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/TWOPAIRS"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#F44336" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/threeofkindview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="3 OF KIND"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/THREEOFKIND"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#E53935" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/fourofkindview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="4 OF KIND"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/FOUROFKIND"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#D32F2F" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/lowstraightview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="1-2-3-4-5"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/STRAIGHTLOW"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#C62828" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/highstraightview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="2-3-4-5-6"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="16dp"
+                        android:textStyle="normal|bold" />
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/STRAIGHTHIGH"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#B71C1C" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/fullhouseview"
+                        android:layout_marginLeft="3dp"
+                        android:fontFamily="casual"
+                        android:text="FULL HOUSE"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="14dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/FULLHOUSE"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#D50000" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/chanceview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="CHANCE"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/CHANCE"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#D50000" />-->
+
+                <TableRow android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/yatzyview"
+                        android:layout_marginLeft="5dp"
+                        android:fontFamily="casual"
+                        android:text="YATZY"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="15dp"
+                        android:textStyle="normal|bold" />
+
+
+                    <com.example.user.myapplication.Game.ScoreButton
+                        android:id="@+id/YATZY"
+                        android:layout_marginRight="30dp"
+                        android:background="@android:color/transparent"
+                        android:onClick="clickScoreButton"
+                        android:textSize="25dp" />
+                    android:drawableLeft="@drawable/ic_pen_24dp"/>
+
+                </TableRow>
+                <!--<View-->
+                <!--android:layout_height="2dip"-->
+                <!--android:background="#D50000" />-->
+
+
+            </TableLayout>
+        </FrameLayout>
+
+    </LinearLayout>
+
     <RelativeLayout
         android:id="@+id/adMobView"
         android:layout_width="match_parent"
@@ -29,452 +492,6 @@
             ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
 
     </RelativeLayout>
-
-    <TableLayout
-        android:id="@+id/leftlayout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/rollingdice"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/adMobView"
-        android:background="@drawable/leftpanel">
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/txtOne"
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="ONE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-            android:layout_marginLeft="5dp"
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_ONE"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textAlignment="center"
-                android:textSize="25dp" />
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#EF5350" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="TWO"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_TWO"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textAlignment="center"
-                android:textSize="25dp" />
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#F44336" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="THREE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_THREE"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textAlignment="center"
-                android:textSize="25dp" />
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#E53935" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="FOUR"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_FOUR"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#D32F2F" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="FIVE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_FIVE"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-        </TableRow>
-
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#C62828" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="SIX"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_SIX"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#B71C1C" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:layout_gravity="center"
-                android:fontFamily="casual"
-                android:paddingLeft="@dimen/text_number"
-                android:text="TOTAL"
-                android:textColor="@color/colorPrimary"
-                android:textSize="25dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_TOTAL"
-                android:layout_marginRight="20dp"
-                android:background="@android:color/transparent"
-                android:textSize="25dp" />
-        </TableRow>
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/bonusview"
-                android:layout_gravity="center"
-                android:layout_marginRight="-15dp"
-                android:fontFamily="casual"
-                android:text="BONUS \n (+50)"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20dp"
-                android:textStyle="normal|bold" />
-            <!--android:layout_marginLeft="5dp"-->
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/SCORE_BONUS"
-                android:background="@android:color/transparent"
-                android:clickable="false"
-                android:textSize="25dp" />
-
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#B71C1C" />-->
-
-
-    </TableLayout>
-
-    <TableLayout
-        android:id="@+id/rightlayout"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/rollingdice"
-        android:layout_alignParentRight="true"
-        android:layout_alignTop="@+id/layoutcenter"
-        android:layout_below="@+id/adMobView"
-        android:background="@drawable/rightpanel">
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/pairview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text= "PAIRS"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/PAIR"
-                android:layout_marginRight="25dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            <!--android:drawableLeft="@drawable/pen"/>-->
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#EF5350" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/twopairview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="2 PAIRS"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/TWOPAIRS"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#F44336" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/threeofkindview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="3 OF KIND"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/THREEOFKIND"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#E53935" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/fourofkindview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="4 OF KIND"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/FOUROFKIND"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#D32F2F" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/lowstraightview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="1-2-3-4-5"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/STRAIGHTLOW"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#C62828" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/highstraightview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="2-3-4-5-6"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16dp"
-                android:textStyle="normal|bold" />
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/STRAIGHTHIGH"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#B71C1C" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/fullhouseview"
-                android:layout_marginLeft="3dp"
-                android:fontFamily="casual"
-                android:text="FULL HOUSE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="14dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/FULLHOUSE"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#D50000" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/chanceview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="CHANCE"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/CHANCE"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#D50000" />-->
-
-        <TableRow android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/yatzyview"
-                android:layout_marginLeft="5dp"
-                android:fontFamily="casual"
-                android:text="YATZY"
-                android:textColor="@color/colorPrimary"
-                android:textSize="15dp"
-                android:textStyle="normal|bold" />
-
-
-            <com.example.user.myapplication.Game.ScoreButton
-                android:id="@+id/YATZY"
-                android:layout_marginRight="30dp"
-                android:background="@android:color/transparent"
-                android:onClick="clickScoreButton"
-                android:textSize="25dp" />
-            android:drawableLeft="@drawable/ic_pen_24dp"/>
-
-        </TableRow>
-        <!--<View-->
-        <!--android:layout_height="2dip"-->
-        <!--android:background="#D50000" />-->
-
-
-    </TableLayout>
-
-    <LinearLayout
-        android:id="@+id/layoutcenter"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_above="@+id/rollingdice"
-        android:layout_marginTop="49dp"
-        android:layout_toLeftOf="@+id/rightlayout"
-        android:layout_toRightOf="@+id/leftlayout"
-        android:orientation="horizontal">
-
-        <ProgressBar
-            android:id="@+id/progressbarfivedice"
-            style="@android:style/Widget.ProgressBar.Horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:layout_weight="1"
-            android:max="105"
-            android:progressDrawable="@drawable/progress_drawable_vertical" />
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/dice"
@@ -555,18 +572,6 @@
 
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/helpbonus"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/leftlayout"
-        android:layout_gravity="center_vertical"
-        android:layout_marginTop="12dp"
-        app:backgroundTint="@color/com_facebook_blue"
-        app:srcCompat="@drawable/ic_help_24dp" />
-
     <Button
         android:id="@+id/rollingdice"
         android:layout_width="wrap_content"
@@ -591,6 +596,25 @@
         android:gravity="center"
         android:onClick="count"
         android:soundEffectsEnabled="true" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/dice"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/linearLayout3"
+        android:layout_toLeftOf="@+id/rollingdice"
+        android:layout_toStartOf="@+id/rollingdice">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/helpbonus"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            app:backgroundTint="@color/com_facebook_blue"
+            app:srcCompat="@drawable/ic_help_24dp" />
+    </FrameLayout>
 
 
     <!--<pl.droidsonroids.gif.GifTextView-->

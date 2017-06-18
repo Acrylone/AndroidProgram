@@ -74,6 +74,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     int clickcount = 0; //Counter for how many times clicking on the desactive Button -> message
     private int counterTotal = 0;
 
+    List<MediaPlayer> mediaPlayers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -267,12 +268,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
 
 //******//Sound Dice Rolling//**********************************************************************
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.shake_dice);
+        final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
 
         final Button play_button = (Button) this.findViewById(R.id.rollingdice);
         play_button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                mp.start();
+                shakeMp.start();
                 throwDice(play_button);
 
             }
@@ -331,6 +332,20 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_FOUR));
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_FIVE));
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_SIX));
+
+        mediaPlayers = new ArrayList<>();
+        final MediaPlayer mp = MediaPlayer.create(this, R.raw.pen);
+        mediaPlayers.add(mp);
+        final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.pen2);
+        mediaPlayers.add(mp2);
+        final MediaPlayer mp3 = MediaPlayer.create(this, R.raw.pen3);
+        mediaPlayers.add(mp3);
+        final MediaPlayer mp4 = MediaPlayer.create(this, R.raw.pen4);
+        mediaPlayers.add(mp4);
+        final MediaPlayer mp5 = MediaPlayer.create(this, R.raw.pen5);
+        mediaPlayers.add(mp5);
+        final MediaPlayer mp6 = MediaPlayer.create(this, R.raw.pen6);
+        mediaPlayers.add(mp6);
 
 
     }
@@ -411,7 +426,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    //*****On Click Void to make sound on Score Button**************************************************
+    //*****On Click Score Button - play a move**************************************************
     @Override
     public void onClick(View v) {
         if(!isAbleToClickScoreButton) {
@@ -419,67 +434,15 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
             return;
         }
 
-        final MediaPlayer mp = MediaPlayer.create(this, R.raw.pen);
-        final MediaPlayer mp2 = MediaPlayer.create(this, R.raw.pen2);
-        final MediaPlayer mp3 = MediaPlayer.create(this, R.raw.pen3);
-        final MediaPlayer mp4 = MediaPlayer.create(this, R.raw.pen4);
-        final MediaPlayer mp5 = MediaPlayer.create(this, R.raw.pen5);
-        final MediaPlayer mp6 = MediaPlayer.create(this, R.raw.pen6);
-
-
-        switch (v.getId()) {
-
-            case R.id.SCORE_ONE:
-                mp.start();
-                break;
-            case R.id.SCORE_TWO:
-                mp2.start();
-                break;
-            case R.id.SCORE_THREE:
-                mp3.start();
-                break;
-            case R.id.SCORE_FOUR:
-                mp4.start();
-                break;
-            case R.id.SCORE_FIVE:
-                mp5.start();
-                break;
-            case R.id.SCORE_SIX:
-                mp6.start();
-                break;
-            case R.id.PAIR:
-                mp.start();
-                break;
-            case R.id.TWOPAIRS:
-                mp2.start();
-                break;
-            case R.id.THREEOFKIND:
-                mp3.start();
-                break;
-            case R.id.FOUROFKIND:
-                mp4.start();
-                break;
-            case R.id.STRAIGHTLOW:
-                mp5.start();
-                break;
-            case R.id.STRAIGHTHIGH:
-                mp6.start();
-                break;
-            case R.id.FULLHOUSE:
-                mp2.start();
-                break;
-            case R.id.CHANCE:
-                mp3.start();
-                break;
-            default:
-                break;
-        }
+        //randomize sound effect
+        int rand = (int)(mediaPlayers.size() * Math.random());
+        mediaPlayers.get(rand).start();
 
         progressBar.setProgress(progressBar.getProgress() + INC_PROGRESS_BAR);
         clickScoreButton(v);
 
         isAbleToClickScoreButton = false;
-
+        zeroAllUnpressedScoreButtons();
     }
 
     //*****Initialize the dice, active them and update the image dice corresponding*********************
@@ -487,6 +450,16 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         for (int i = 0; i < NUM_OF_DICE; i++) {
             dice[i].setValue(i + 1);
             dice[i].setIsActive(true);
+        }
+    }
+
+    public void zeroAllUnpressedScoreButtons() {
+        for(ScoreButton b : scoreButtons) {
+            if(b.isEnabled()
+                    && b.getId() != (R.id.SCORE_TOTAL)
+                    && b.getId() != (R.id.SCORE_BONUS)) { //can press it later
+                b.setText("0");
+            }
         }
     }
 
