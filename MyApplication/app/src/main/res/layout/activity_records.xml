@@ -65,7 +65,7 @@
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
                 android:text="NICKNAME "
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
@@ -74,7 +74,7 @@
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
                 android:text="123456789"
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FFFFFF"
                 android:textSize="20dp"
                 android:textStyle="normal|bold" />
 
@@ -83,7 +83,7 @@
                 android:fontFamily="casual"
                 android:paddingLeft="@dimen/text_number"
                 android:text="5/6 dices "
-                android:textColor="@color/colorPrimary"
+                android:textColor="#FFFFFF"
                 android:textSize="18dp"
                 android:textStyle="normal|bold" />
 
@@ -587,5 +587,10 @@
             android:background="#D50000" />
 
     </TableLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

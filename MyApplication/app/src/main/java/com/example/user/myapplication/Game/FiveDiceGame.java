@@ -2,22 +2,26 @@
 
 package com.example.user.myapplication.Game;
 
-import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.LinearInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,22 +32,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.myapplication.EndGame;
-import com.example.user.myapplication.Game.Screenshot;
-import com.example.user.myapplication.InterstitialGoogle;
+import com.example.user.myapplication.Menu.ChoiceGame;
 import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
 import com.example.user.myapplication.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
-import com.google.android.gms.ads.formats.NativeAd;
-//import com.google.android.gms.games.internal.game.Screenshot;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.google.android.gms.games.internal.game.Screenshot;
 
 public class FiveDiceGame extends AppCompatActivity implements View.OnClickListener {
 
@@ -63,6 +63,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
     private View main;
     private ImageView imageView;
+    String selectedImagePath;
+    public static final String PRODUCT_PHOTO = "photo";
+    public static Bitmap product_image;
+
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     private int num_of_launches = 0;
 
@@ -268,16 +274,47 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
 
 //******//Sound Dice Rolling//**********************************************************************
+//        final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
+//
+//        final Button play_button = (Button) this.findViewById(R.id.rollingdice);
+//        play_button.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                shakeMp.start();
+//                throwDice(play_button);
+//
+//            }
+//        });
+
+//**********Make a blink button New Game************************************************************
+        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+        final Button btn = (Button) findViewById(R.id.rollingdice);
         final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
 
-        final Button play_button = (Button) this.findViewById(R.id.rollingdice);
-        play_button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                shakeMp.start();
-                throwDice(play_button);
+        animation.setDuration(350); // duration - half a second
+        animation.setInterpolator(new
 
-            }
-        });
+                LinearInterpolator()
+
+        ); // do not alter animation rate
+        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+        btn.startAnimation(animation);// Start blink animation
+
+        btn.setOnClickListener(new View.OnClickListener()
+
+                               {
+
+                                   public void onClick(View view) {
+                                       shakeMp.start();
+                                       throwDice(btn);
+                                       view.clearAnimation();
+//        mediaPlayer.start();
+
+                                   }
+
+                               }
+
+        );
 
 
 //******// Floating Button Help//*******************************************************************
@@ -351,51 +388,59 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     }
 //*****End of OnCreate******************************************************************************
 //**************************************************************************************************
-//**************************************************************************************************
+//***Show PopUp Window to help the user to understand each box**************************************
 
     public void showPopupPairs(final View anchorView) {
-        String s = "*Pairs* : [ 6 ] [ 6 ] [ 1 ] [ 3 ] [ 4 ] \nSum of 2 dice with the same number - Score : 12";
-        showPopupGeneral(anchorView , s);
+        String s = "*Pairs* : ⚅ ⚅ ⚀ ⚂ ⚃ \nSum of 2 dice with the same number - Score : 12";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupTwoPairs(final View anchorView) {
-        String s = "*2 Pairs* : [ 5 ] [ 5 ] [ 6 ] [ 6 ] [ 4 ] \nSum of 2 dice twice with the same number - Score : 22";
-        showPopupGeneral(anchorView , s);
+        String s = "*2 Pairs* : ⚄ ⚄ ⚅ ⚅ ⚃ \nSum of 2 dice twice with the same number - Score : 22";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupThreeOfKind(final View anchorView) {
-        String s = "*3 of Kind* : [ 4 ] [ 4 ] [ 4 ] [ 3 ] [ 6 ] \nAt least 3 dice the same - Score : 12";
-        showPopupGeneral(anchorView , s);
+        String s = "*3 of Kind* : ⚃ ⚃ ⚃ ⚂ ⚅ \nAt least 3 dice the same - Score : 12";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupFourOfKind(final View anchorView) {
-        String s = "*4 of Kind* : [ 2 ] [ 2 ] [ 2 ] [ 2 ] [ 6 ] \nAt least 4 dice the same - Score : 8";
-        showPopupGeneral(anchorView , s);
+        String s = "*4 of Kind* : ⚁ ⚁ ⚁ ⚁ ⚅ \nAt least 4 dice the same - Score : 8";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupLowStraight(final View anchorView) {
-        String s = "*Low Straight* : [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] \n5 sequential dice between 1 - 5 - Score : 15";
-        showPopupGeneral(anchorView , s);
+        String s = "*Low Straight* : ⚀ ⚁ ⚂ ⚃ ⚄ \n5 sequential dice between 1 - 5 - Score : 15";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupHighStraight(final View anchorView) {
-        String s = "*High Straight* : [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ 6 ] \n5 sequential dice between 2 - 6 - Score : 20";
-        showPopupGeneral(anchorView , s);
+        String s = "*High Straight* : ⚁ ⚂ ⚃ ⚄ ⚅ \n5 sequential dice between 2 - 6 - Score : 20";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupFullHouse(final View anchorView) {
-        String s = "*Full House* : [ 2 ] [ 2 ] [ 5 ] [ 5 ] [ 5 ] \n3 of one number and 2 of another - Score : 19";
-        showPopupGeneral(anchorView , s);
+        String s = "*Full House* : ⚁ ⚁ ⚄ ⚄ ⚄ \n3 of one number and 2 of another - Score : 19";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupChance(final View anchorView) {
-        String s = "*Chance* : [ 3 ] [ 6 ] [ 4 ] [ 5 ] [ 1 ] \nThe sum of all dice - Score : 19";
-        showPopupGeneral(anchorView , s);
+        String s = "*Chance* : ⚂ ⚅ ⚃ ⚄ ⚀ \nThe sum of all dice - Score : 19";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupYatzy(final View anchorView) {
-        String s = "*Yatzy* : [ 6 ] [ 6 ] [ 6 ] [ 6 ] [ 6 ] \nSum of 5 dice with the same number - Score : 30";
-        showPopupGeneral(anchorView , s);
+        String s = "*Yatzy* : ⚅ ⚅ ⚅ ⚅ ⚅ \nSum of 5 dice with the same number - Score : 50";
+        showPopupGeneral(anchorView, s);
     }
+
     public void showPopupBonus(final View anchorView) {
         String s = "*BONUS* :\n Try to reach 63 points or more, and you receive a bonus of 50 points bonus!";
-        showPopupGeneral(anchorView , s);
+        showPopupGeneral(anchorView, s);
     }
 
-
-    public void showPopupGeneral(final View anchorView , String showOnScreen) {
+    public void showPopupGeneral(final View anchorView, String showOnScreen) {
 
         View popupView = getLayoutInflater().inflate(R.layout.popup_layout, null);
 
@@ -406,7 +451,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
         tv.setText(showOnScreen);
 //        tv.setAllCaps(true);
-        tv.setTextColor(Color.RED);
+        tv.setTextColor(Color.BLUE);
 
         popupWindow.setFocusable(true);
         popupView.setBackgroundColor(Color.WHITE);
@@ -429,20 +474,21 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     //*****On Click Score Button - play a move**************************************************
     @Override
     public void onClick(View v) {
-        if(!isAbleToClickScoreButton) {
-            Toast.makeText(this , "throw dice first!" , Toast.LENGTH_LONG).show();
+        if (!isAbleToClickScoreButton) {
+            Toast.makeText(this, "Throw dice first!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         //randomize sound effect
-        int rand = (int)(mediaPlayers.size() * Math.random());
+        int rand = (int) (mediaPlayers.size() * Math.random());
         mediaPlayers.get(rand).start();
 
         progressBar.setProgress(progressBar.getProgress() + INC_PROGRESS_BAR);
+//        zeroAllUnpressedScoreButtons((ScoreButton) v);
+
         clickScoreButton(v);
 
-        isAbleToClickScoreButton = false;
-        zeroAllUnpressedScoreButtons();
+//        isAbleToClickScoreButton = false;
     }
 
     //*****Initialize the dice, active them and update the image dice corresponding*********************
@@ -453,11 +499,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    public void zeroAllUnpressedScoreButtons() {
-        for(ScoreButton b : scoreButtons) {
-            if(b.isEnabled()
+    public void zeroAllUnpressedScoreButtons(ScoreButton v) {
+        for (ScoreButton b : scoreButtons) {
+            if (b.isEnabled()
                     && b.getId() != (R.id.SCORE_TOTAL)
-                    && b.getId() != (R.id.SCORE_BONUS)) { //can press it later
+                    && b.getId() != (R.id.SCORE_BONUS)
+                    && !b.equals(v)) { //can press it later
                 b.setText("0");
             }
         }
@@ -719,50 +766,82 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
 
     //**************************************************************************************************
-    public Bitmap takeScreenshot() {
-        View rootView = findViewById(android.R.id.content).getRootView();
-        rootView.setDrawingCacheEnabled(true);
-        return rootView.getDrawingCache();
-    }
 
-    public void saveBitmap(Bitmap bitmap) {
-        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
-        FileOutputStream fos;
-        try {
-            fos = new FileOutputStream(imagePath);
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-        } catch (FileNotFoundException e) {
-            Log.e("GREC", e.getMessage(), e);
-        } catch (IOException e) {
-            Log.e("GREC", e.getMessage(), e);
-        }
-    }
+    //    public void saveBitmap(Bitmap bitmap) {
+//        File imagePath = new File(Environment.getExternalStorageDirectory() + "/screenshot.png");
+//        FileOutputStream fos;
+//        try {
+//            fos = new FileOutputStream(imagePath);
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
+//            fos.flush();
+//            fos.close();
+//        } catch (FileNotFoundException e) {
+//            Log.e("GREC", e.getMessage(), e);
+//        } catch (IOException e) {
+//            Log.e("GREC", e.getMessage(), e);
+//        }
+//    }
+//
+//    public Bitmap getScreenShot(View view) {
+//        View screenView = view.getRootView();
+//        screenView.setDrawingCacheEnabled(true);
+//        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
+//        screenView.setDrawingCacheEnabled(false);
+//        sharedPreferences = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
+//        editor = sharedPreferences.edit();
+//        editor.putString("photo", selectedImagePath); // Store selectedImagePath with key "ImagePath". This key will be then used to retrieve data.
+//        editor.commit();
+//        imageView.setImageBitmap(bitmap);
+//        return bitmap;
+//    }
+//
+//    public static void store(Bitmap bm, String fileName){
+//        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
+//        File dir = new File(dirPath);
+//        if(!dir.exists())
+//            dir.mkdirs();
+//        File file = new File(dirPath, fileName);
+//        try {
+//            FileOutputStream fOut = new FileOutputStream(file);
+//            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
+//            fOut.flush();
+//            fOut.close();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static Bitmap getScreenShot(View view) {
-        View screenView = view.getRootView();
-        screenView.setDrawingCacheEnabled(true);
-        Bitmap bitmap = Bitmap.createBitmap(screenView.getDrawingCache());
-        screenView.setDrawingCacheEnabled(false);
-        return bitmap;
-    }
+//    private void takeScreenshot() {
+//
+//        try {
+//            // image naming and path  to include sd card  appending name you choose for file
+//            String mPath = Environment.getExternalStorageDirectory().toString() + "/" + ".jpg";
+//
+//            // create bitmap screen capture
+//            View v1 = getWindow().getDecorView().getRootView();
+//            v1.setDrawingCacheEnabled(true);
+//            Bitmap bitmap = Bitmap.createBitmap(v1.getDrawingCache());
+//            v1.setDrawingCacheEnabled(false);
+//
+//            File imageFile = new File(mPath);
+//
+//            FileOutputStream outputStream = new FileOutputStream(imageFile);
+//
+//            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+//            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
+//            imageView.setImageBitmap(screenshot);
+//
+//            int quality = 100;
+//            bitmap.compress(Bitmap.CompressFormat.JPEG, quality, outputStream);
+//            outputStream.flush();
+//            outputStream.close();
+//
+//        } catch (Throwable e) {
+//            // Several error may come out with file handling or OOM
+//            e.printStackTrace();
+//        }
+//    }
 
-    public static void store(Bitmap bm, String fileName){
-        final String dirPath = Environment.getExternalStorageDirectory().getAbsolutePath() + "/Screenshots";
-        File dir = new File(dirPath);
-        if(!dir.exists())
-            dir.mkdirs();
-        File file = new File(dirPath, fileName);
-        try {
-            FileOutputStream fOut = new FileOutputStream(file);
-            bm.compress(Bitmap.CompressFormat.PNG, 85, fOut);
-            fOut.flush();
-            fOut.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 
     //*****Class of operations when the player clicked on one of the cell of scores ********************
     public void clickScoreButton(View view) {
@@ -782,6 +861,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         //Reset the number of click on the desactive Button
         clickcount = 0;
 
+
 //******/Determinate the end of the game************************************************************
 
         num_of_launches++;
@@ -791,7 +871,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
             String finalScoreStr = ((ScoreButton) findViewById(R.id.SCORE_TOTAL)).getText().toString();
             EndGame.scoreTotal = Integer.valueOf(finalScoreStr);
 
-//            ImageView imageView = (ImageView)findViewById(R.id.imageView);
+//            ImageView imageView = (ImageView) findViewById(R.id.imageView);
 //            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
 //            imageView.setImageBitmap(screenshot);
 

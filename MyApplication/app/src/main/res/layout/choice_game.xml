@@ -42,6 +42,15 @@
             android:layout_below="@+id/fiveDiceTraining"
             android:text="Vs Computer (SOON)" />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_below="@+id/fiveDiceComputer"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="133dp"
+            android:layout_marginStart="133dp"
+            android:layout_marginTop="36dp" />
+
     </RelativeLayout>
 
     <RelativeLayout

@@ -4,25 +4,38 @@ import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.user.myapplication.Game.FiveDiceGame;
 import com.example.user.myapplication.R;
 
 import java.io.File;
 
+import static com.example.user.myapplication.R.id.Screenshot;
+import static com.example.user.myapplication.R.id.imageView;
+
 public class RecordsActivity extends AppCompatActivity {
 
     ImageView imageview;
+    FiveDiceGame fiveDiceGame;
     boolean whichGame;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -52,11 +65,11 @@ public class RecordsActivity extends AppCompatActivity {
         Toast.makeText(RecordsActivity.this, "Score Total " + scoreOne, Toast.LENGTH_SHORT).show();
 
         whichGame = sharedPreferences.getBoolean("WHICH_GAME", true);
-        if(whichGame){
-            TextView whichGame = (TextView)findViewById(R.id.TitleScore1);
+        if (whichGame) {
+            TextView whichGame = (TextView) findViewById(R.id.TitleScore1);
             whichGame.setText("5 Game");
-        }else{
-            TextView whichGame = (TextView)findViewById(R.id.TitleScore1);
+        } else {
+            TextView whichGame = (TextView) findViewById(R.id.TitleScore1);
             whichGame.setText("6 Game");
         }
 
@@ -73,30 +86,27 @@ public class RecordsActivity extends AppCompatActivity {
                 toast.setDuration(Toast.LENGTH_LONG);
                 toast.setView(layout);
                 toast.show();
-
-
+            }
+        });
+    }
 
 
 // Intent i = new Intent(getApplicationContext(), ChoiceGame.class);
 //                startActivity(i);
-            }
 
-        });
+    public Bitmap decodeBase64(String input) {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
 
-    private void shareImage(File file) {
-        Uri uri = Uri.fromFile(file);
-        Intent intent = new Intent();
-        intent.setAction(Intent.ACTION_SEND);
-        intent.setType("image/*");
 
-        intent.putExtra(android.content.Intent.EXTRA_SUBJECT, "");
-        intent.putExtra(android.content.Intent.EXTRA_TEXT, "");
-        intent.putExtra(Intent.EXTRA_STREAM, uri);
-        try {
-            startActivity(Intent.createChooser(intent, "Share Screenshot"));
-        } catch (ActivityNotFoundException e) {
-            Toast.makeText(getBaseContext(), "No App Available", Toast.LENGTH_SHORT).show();
-        }
+    private void openScreenshot(File imageFile) {
+        Intent intent = new Intent();
+        intent.setAction(Intent.ACTION_VIEW);
+        Uri uri = Uri.fromFile(imageFile);
+        intent.setDataAndType(uri, "image/*");
+        startActivity(intent);
     }
 }
+
+

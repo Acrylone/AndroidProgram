@@ -53,7 +53,7 @@ public class ToolsActivity extends AppCompatActivity {
         nickname = sharedPreferences.getString(PREFS_NAME, nickname);
         usernickname.setText(nickname);
 
-        Toast.makeText(ToolsActivity.this, "Nickname : " + nickname, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(ToolsActivity.this, "Nickname : " + nickname, Toast.LENGTH_SHORT).show();
 
         changeNickname.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ public class ToolsActivity extends AppCompatActivity {
                 editor.putString(PREFS_NAME, nickname);
                 editor.apply();
 
-                Toast.makeText(ToolsActivity.this, "Nickname Changed to " + nickname, Toast.LENGTH_SHORT).show();
+                Toast.makeText(ToolsActivity.this, "Nickname Changed to " + nickname + "Click on Apply to Make Change", Toast.LENGTH_SHORT).show();
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(usernickname.getWindowToken(), 0);

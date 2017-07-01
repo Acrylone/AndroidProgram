@@ -97,7 +97,7 @@ public class MainMenuActivity extends AppCompatActivity
         //**********Make a blink button New Game************************************************************
         final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
         final Button btn = (Button) findViewById(R.id.newgame);
-        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.newgame);
+//        final MediaPlayer mediaPlayer = MediaPlayer.create(this, R.raw.newgame);
 
         animation.setDuration(750); // duration - half a second
         animation.setInterpolator(new
@@ -155,7 +155,7 @@ public class MainMenuActivity extends AppCompatActivity
             nickname = sharedPreferences.getString(PREFS_NAME, "");
 
             Toast.makeText(this, " Name: " + nickname, Toast.LENGTH_LONG).show();
-            viewusername.setText("   Welcome Back \n" + nickname);
+            viewusername.setText("   Welcome Back, \n" + nickname + " :-)");
 //            viewusername.setText("Welcome " + nickname);
 
         } else {
@@ -188,7 +188,7 @@ public class MainMenuActivity extends AppCompatActivity
                     editor.putString(PREFS_NAME, nickname);
                     editor.apply();
                     Log.i("sharedPreferences" , "saved: " + sharedPreferences.getString(PREFS_NAME , null));
-                    viewusername.setText("Welcome \n" + nickname);
+                    viewusername.setText("Welcome \n" + nickname + ":-)");
                 }
             });
             AlertDialog alert = builderAlert.create();

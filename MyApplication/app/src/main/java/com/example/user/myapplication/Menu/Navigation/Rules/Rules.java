@@ -76,27 +76,27 @@ public class Rules extends AppCompatActivity {
         List<String> LeftScores  = new ArrayList<String>();
         LeftScores.add("In the left section there are six boxes. The score in each of these boxes is determined by adding the total number of dice matching that box.\n" +
                        "For Example :\n" +
-                       "*Ones* : [ 1 ] [ 1 ] [ 1 ] [ 3 ] [ 4 ] \nSum of dice with number 1 - Score : 3\n" +
-                       "*Twos* : [ 2 ] [ 2 ] [ 2 ] [ 5 ] [ 6 ] \nSum of dice with number 2 - Score : 6\n" +
-                       "*Threes* : [ 3 ] [ 3 ] [ 3 ] [ 3 ] [ 5 ] \nSum of dice with number 3 - Score : 12\n" +
-                       "*Fours* : [ 1 ] [ 4 ] [ 1 ] [ 4 ] [ 6 ] \nSum of dice with number 4 - Score : 8\n" +
-                       "*Fives* : [ 5 ] [ 1 ] [ 5 ] [ 5 ] [ 6 ] \nSum of dice with number 5 - Score : 15\n" +
-                       "*Sixes* : [ 4 ] [ 6 ] [ 6 ] [ 6 ] [ 6 ] \nSum of dice with number 6 - Score : 24\n");
+                       "*Ones* : ⚀ ⚀ ⚀ ⚂ ⚃ \nSum of dice with number 1 - Score : 3\n" +
+                       "*Twos* : ⚁ ⚁ ⚁ ⚄ ⚅ \nSum of dice with number 2 - Score : 6\n" +
+                       "*Threes* : ⚂ ⚂ ⚂ ⚂ ⚄ \nSum of dice with number 3 - Score : 12\n" +
+                       "*Fours* : ⚀ ⚃ ⚀ ⚃ ⚅ \nSum of dice with number 4 - Score : 8\n" +
+                       "*Fives* : ⚄ ⚀ ⚄ ⚄ ⚅ \nSum of dice with number 5 - Score : 15\n" +
+                       "*Sixes* : ⚃ ⚅ ⚅ ⚅ ⚅ \nSum of dice with number 6 - Score : 24\n");
 //
         List<String> RightScores = new ArrayList<String>();
-        RightScores.add("*Pairs* : [ 6 ] [ 6 ] [ 1 ] [ 3 ] [ 4 ] \nSum of 2 dice with the same number - Score : 12\n\n" +
-                        "*2 Pairs* : [ 5 ] [ 5 ] [ 6 ] [ 6 ] [ 4 ] \nSum of 2 dice twice with the same number - Score : 22\n\n" +
-                        "*[6 DICES] 3 Pairs* : [ 2 ] [ 2 ] [ 4 ] [ 4 ] [ 6 ] [ 6 ] \nSum of 3 dice 3 times with the same number - Score : 24\n\n" +
-                        "*3 of Kind* : [ 4 ] [ 4 ] [ 4 ] [ 3 ] [ 6 ] \nAt least 3 dice the same - Score : 12\n\n" +
-                        "*4 of Kind* : [ 2 ] [ 2 ] [ 2 ] [ 2 ] [ 6 ] \nAt least 4 dice the same - Score : 8\n\n" +
-                        "*[6 DICES] 5 of Kind* : [ 5 ] [ 5 ] [ 5 ] [ 5 ] [ 5 ] [ 6 ] \nAt least 5 dice the same - Score : 25\n\n" +
-                        "*Low Straight* : [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] \n5 sequential dice between 1 - 5 - Score : 15\n\n" +
-                        "*High Straight* : [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ 6 ] \n5 sequential dice between 2 - 6 - Score : 20\n\n" +
-                        "*[6 DICES] Full Straight* : [ 1 ] [ 2 ] [ 3 ] [ 4 ] [ 5 ] [ 6 ] \n6 sequential dice between 1 - 6 - Score : 21\n\n" +
-                        "*[6 DICES] 3+3* : [ 3 ] [ 3 ] [ 3 ] [ 6 ] [ 6 ] [ 6 ] \nSum of 3 of kind twice - Score : 27\n\n" +
-                        "*[6 DICES] 4+2* : [ 4 ] [ 4 ] [ 4 ] [ 4 ] [ 5 ] [ 5 ] \nSum of 4 of kind and pairs - Score : 26\n\n" +
-                        "*Full House* : [ 2 ] [ 2 ] [ 5 ] [ 5 ] [ 5 ] \n3 of one number and 2 of another - Score : 19\n\n" +
-                        "*Chance* : [ 3 ] [ 6 ] [ 4 ] [ 5 ] [ 1 ] \nThe sum of all dice - Score : 19\n\n");
+        RightScores.add("*Pairs* : ⚅ ⚅ ⚀ ⚂ ⚃ \nSum of 2 dice with the same number - Score : 12\n\n" +
+                        "*2 Pairs* : ⚄ ⚄ ⚅ ⚅ ⚃ \nSum of 2 dice twice with the same number - Score : 22\n\n" +
+                        "*[6 DICES] 3 Pairs* : ⚁ ⚁ ⚃ ⚃ ⚅ ⚅ \nSum of 3 dice 3 times with the same number - Score : 24\n\n" +
+                        "*3 of Kind* : ⚃ ⚃ ⚃ ⚂ ⚅ \nAt least 3 dice the same - Score : 12\n\n" +
+                        "*4 of Kind* : ⚁ ⚁ ⚁ ⚁ ⚅ \nAt least 4 dice the same - Score : 8\n\n" +
+                        "*[6 DICES] 5 of Kind* : ⚄ ⚄ ⚄ ⚄ ⚄ ⚅ \nAt least 5 dice the same - Score : 25\n\n" +
+                        "*Low Straight* : ⚀ ⚁ ⚂ ⚃ ⚄ \n5 sequential dice between 1 - 5 - Score : 15\n\n" +
+                        "*High Straight* : ⚁ ⚂ ⚃ ⚄ ⚅ \n5 sequential dice between 2 - 6 - Score : 20\n\n" +
+                        "*[6 DICES] Full Straight* : ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ \n6 sequential dice between 1 - 6 - Score : 21\n\n" +
+                        "*[6 DICES] 3+3* : ⚂ ⚂ ⚂ ⚅ ⚅ ⚅ \nSum of 3 of kind twice - Score : 27\n\n" +
+                        "*[6 DICES] 4+2* : ⚃ ⚃ ⚃ ⚃ ⚄ ⚄ \nSum of 4 of kind and pairs - Score : 26\n\n" +
+                        "*Full House* : ⚁ ⚁ ⚄ ⚄ ⚄ \n3 of one number and 2 of another - Score : 19\n\n" +
+                        "*Chance* : ⚂ ⚅ ⚃ ⚄ ⚀ \nThe sum of all dice - Score : 19\n\n");
 
         List<String> YatzY = new ArrayList<String>();
         YatzY.add("A YatzY is a 5 of a Kind (all the die faces are the same) or 6 of a Kind for Arcade Game,\n" +

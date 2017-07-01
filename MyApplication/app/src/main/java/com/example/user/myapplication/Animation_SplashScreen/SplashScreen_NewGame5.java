@@ -10,7 +10,7 @@ import com.example.user.myapplication.R;
 
 public class SplashScreen_NewGame5 extends AppCompatActivity {
 
-    private int splashTime = 6500;
+    private int splashTime = 5000;
     private Thread thread;
     private ProgressBar mSpinner;
 

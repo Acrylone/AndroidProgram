@@ -25,7 +25,7 @@
         android:layout_height="100dp"
         android:layout_below="@+id/textView1"
         android:layout_centerInParent="true"
-        android:background="@drawable/diceanimated" />
+        android:background="@drawable/dice" />
 
 
 </RelativeLayout>

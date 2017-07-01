@@ -15,10 +15,22 @@
     android:paddingTop="@dimen/activity_vertical_margin"
 
     <!-- view for AdMob Banner Ad -->
+    <RelativeLayout
+        android:id="@+id/adMobView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/adView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="SMART_BANNER"
+            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
+
+    </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout3"
+        android:id="@+id/linearLayout5dice"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/rollingdice"
@@ -27,12 +39,12 @@
         android:orientation="horizontal">
 
         <FrameLayout
+            android:id="@+id/leftlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
 
             <TableLayout
-                android:id="@+id/leftlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/leftpanel">
@@ -218,12 +230,12 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/layoutcenter"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3">
 
             <FrameLayout
-                android:id="@+id/layoutcenter"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
@@ -239,12 +251,12 @@
         </FrameLayout>
 
         <FrameLayout
+            android:id="@+id/rightlayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="2">
 
             <TableLayout
-                android:id="@+id/rightlayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@drawable/rightpanel">
@@ -478,21 +490,6 @@
 
     </LinearLayout>
 
-    <RelativeLayout
-        android:id="@+id/adMobView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="@+id/layoutcenter">
-
-        <com.google.android.gms.ads.AdView xmlns:ads="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/adView"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            ads:adSize="SMART_BANNER"
-            ads:adUnitId="@string/banner_ad_unit_id"></com.google.android.gms.ads.AdView>
-
-    </RelativeLayout>
-
     <LinearLayout
         android:id="@+id/dice"
         android:layout_width="match_parent"
@@ -603,9 +600,9 @@
         android:layout_above="@+id/dice"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/linearLayout3"
         android:layout_toLeftOf="@+id/rollingdice"
-        android:layout_toStartOf="@+id/rollingdice">
+        android:layout_toStartOf="@+id/rollingdice"
+        android:layout_below="@+id/linearLayout5dice">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/helpbonus"
