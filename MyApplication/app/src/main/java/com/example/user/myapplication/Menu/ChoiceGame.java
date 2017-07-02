@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.example.user.myapplication.Animation_SplashScreen.SplashScreen_NewGame5;
 import com.example.user.myapplication.Animation_SplashScreen.SplashScreen_NewGame6;
+import com.example.user.myapplication.Game.FiveDiceGameVsComp;
 import com.example.user.myapplication.Game.SixDiceGame;
 import com.example.user.myapplication.R;
 
@@ -74,5 +75,13 @@ public class ChoiceGame extends Activity {
             }
 
         });
+    }
+
+    public void goTo5DiceVsComp(View v) {
+        startActivity(new Intent(this , FiveDiceGameVsComp.class));
+    }
+
+    public void goTo6DiceVsComp(View view) {
+        //TODO
     }
 }

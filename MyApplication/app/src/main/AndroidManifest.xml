@@ -8,7 +8,6 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <!-- <uses-sdk -->
     <!-- android:minSdkVersion="24" -->
     <!-- android:targetSdkVersion="24" -->
@@ -21,19 +20,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         ///////////////////////////////////////////////////////////////////
-         <activity
-         android:name=".Animation_SplashScreen.SplashScreen_Entrance"
-         android:configChanges="keyboardHidden|orientation|screenSize"
-         android:screenOrientation="portrait"
-         android:theme="@style/AppTheme.NoActionBar">
-         <intent-filter>
-         <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".Animation_SplashScreen.SplashScreen_Entrance"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-
-         <category android:name="android.intent.category.LAUNCHER" />
-         </intent-filter>
-         </activity>
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         /////////////////////////////////////////////////////////////////////
         <activity
             android:name=".Menu.MainMenuActivity"
@@ -41,11 +38,13 @@
             android:label="@string/title_activity_main_start"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
         ///////////////////////////////////////////////////////////////////
         <meta-data
@@ -156,8 +155,9 @@
         <activity
             android:name=".InterstitialGoogle"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"
-            android:theme="@android:style/Theme.Translucent"></activity>
-        <activity android:name=".GoogleLogin"></activity>
+            android:theme="@android:style/Theme.Translucent" />
+        <activity android:name=".GoogleLogin" />
+        <activity android:name=".Game.FiveDiceGameVsComp"></activity>
     </application>
 
 </manifest>

@@ -40,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/fiveDiceTraining"
-            android:text="Vs Computer (SOON)" />
+            android:text="Vs Computer (SOON)"
+            android:onClick="goTo5DiceVsComp"/>
 
         <Space
             android:layout_width="match_parent"
@@ -83,7 +84,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/sixDiceTraining"
-            android:text="Vs Computer (SOON)" />
+            android:text="Vs Computer (SOON)"
+            android:onClick="goTo6DiceVsComp"/>
 
     </RelativeLayout>
 </LinearLayout>
