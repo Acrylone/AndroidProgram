@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -47,12 +48,13 @@ import java.util.List;
 
 public class FiveDiceGame extends AppCompatActivity implements View.OnClickListener {
 
-
     private static final int NUM_OF_THROWING_MAX = 15;
     private static final int NUM_OF_DICE = 5;
     private static final int NUM_OF_ALLOWED_THROWS = 3;
 
     private static final int INC_PROGRESS_BAR = 7;
+
+    private static int COUNTDOWN = NUM_OF_ALLOWED_THROWS -1;
 
     private int alreadyThrown;
 
@@ -86,6 +88,11 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.five_dice_game);
+
+
+        //********//Countdown ont rightside**************************************************************
+
+
 
 
         //******//ProgressBar function**********************************************************************
@@ -577,6 +584,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     //*****Function to active update and limit the rolling dice and showing result dice*****************
     public void throwDice(View view) {
         isAbleToClickScoreButton = true;
+        TextView tx = (TextView) findViewById(R.id.countdown);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/DIGITALDREAM.ttf");
+        tx.setTypeface(custom_font);
+
+        tx.setText("" + COUNTDOWN);
+        COUNTDOWN--;
 
         if (alreadyThrown < NUM_OF_ALLOWED_THROWS) {
 
@@ -618,7 +631,6 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
                     Toast.LENGTH_SHORT).show();
         }
     }
-
 
     //*****Make active and visible the dice during launching********************************************
     public void toggleActivation(View view) {
@@ -846,11 +858,9 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     //*****Class of operations when the player clicked on one of the cell of scores ********************
     public void clickScoreButton(View view) {
 
-
         if (alreadyThrown == 0) {
             return;
         }
-
 
         //Make cell selected disable
         view.setEnabled(false);
@@ -860,6 +870,8 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         alreadyThrown = 0;
         //Reset the number of click on the desactive Button
         clickcount = 0;
+        //Reset the countdown
+        COUNTDOWN = NUM_OF_ALLOWED_THROWS -1;
 
 
 //******/Determinate the end of the game************************************************************

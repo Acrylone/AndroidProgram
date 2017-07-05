@@ -22,6 +22,7 @@ public class FiveDiceGameVsComp extends FiveDiceGame {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.five_dice_game);
+        getSupportActionBar().hide();
 
         //column1
         TableRow[] leftCol = {
@@ -54,6 +55,11 @@ public class FiveDiceGameVsComp extends FiveDiceGame {
 //        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.CHANCE));
 //        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.YATZY));
 
+
+        for(ScoreButton sb: scoreButtonsComputer){
+            sb.setVisibility(View.VISIBLE);
+        }
+
         for(TableRow tr : leftCol) {
             ScoreButton sb = new ScoreButton(this);
 //            sb.setBackgroundColor(Color.TRANSPARENT);
@@ -69,9 +75,6 @@ public class FiveDiceGameVsComp extends FiveDiceGame {
              */
         }
 
-        for(ScoreButton sb: scoreButtonsComputer){
-            sb.setVisibility(View.VISIBLE);
-        }
 
 
         LinearLayout li = (LinearLayout)findViewById(R.id.linearLayout5dice);

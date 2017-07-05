@@ -1,91 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/corner"
-    android:orientation="vertical"
-    android:padding="10dp"
-    android:weightSum="1">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/classicGame"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="serif"
-            android:text="CLASSIC (5 DICE)"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="normal|bold|italic" />
-
-        <Button
-            android:id="@+id/fiveDiceTraining"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/classicGame"
-            android:layout_centerHorizontal="true"
-            android:text="Training" />
-
-        <Button
-            android:id="@+id/fiveDiceComputer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/fiveDiceTraining"
-            android:text="Vs Computer (SOON)"
-            android:onClick="goTo5DiceVsComp"/>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_below="@+id/fiveDiceComputer"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="133dp"
-            android:layout_marginStart="133dp"
-            android:layout_marginTop="36dp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/linearLayout2"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:background="@drawable/corner"
+        android:orientation="vertical"
+        android:padding="10dp"
+        android:weightSum="1">
 
-        <TextView
-            android:id="@+id/arcadeGame"
+        <RelativeLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/classicGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="serif"
+                android:text="CLASSIC (5 DICE)"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="normal|bold|italic" />
+
+            <Button
+                android:id="@+id/fiveDiceTraining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/classicGame"
+                android:layout_centerHorizontal="true"
+                android:text="Training" />
+
+            <Button
+                android:id="@+id/fiveDiceComputer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fiveDiceTraining"
+                android:onClick="goTo5DiceVsComp"
+                android:text="Vs Computer (SOON)" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:layout_below="@+id/fiveDiceComputer"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="133dp"
+                android:layout_marginStart="133dp"
+                android:layout_marginTop="36dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="serif"
-            android:text="ARCADE (6 DICE)"
-            android:textAlignment="center"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="normal|bold|italic" />
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/sixDiceTraining"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/arcadeGame"
-            android:text="Training" />
+            <TextView
+                android:id="@+id/arcadeGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:text="ARCADE (6 DICE)"
+                android:textAlignment="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="normal|bold|italic" />
 
-        <Button
-            android:id="@+id/sixDiceComputer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sixDiceTraining"
-            android:text="Vs Computer (SOON)"
-            android:onClick="goTo6DiceVsComp"/>
+            <Button
+                android:id="@+id/sixDiceTraining"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/arcadeGame"
+                android:text="Training" />
 
-    </RelativeLayout>
-</LinearLayout>
+            <Button
+                android:id="@+id/sixDiceComputer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sixDiceTraining"
+                android:onClick="goTo6DiceVsComp"
+                android:text="Vs Computer (SOON)" />
+
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

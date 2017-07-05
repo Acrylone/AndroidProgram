@@ -12,6 +12,8 @@
     <dimen name="text_margin">16dp</dimen>
     <dimen name="item_width">200dp</dimen>
     <dimen name="label_txt_size">20dp</dimen>
+    <dimen name="label_txt_scorebutton">25dp</dimen>
+
 
     <!--Floating action button-->
     <dimen name="design_fab_image_size" tools:override="true">60dp</dimen>
