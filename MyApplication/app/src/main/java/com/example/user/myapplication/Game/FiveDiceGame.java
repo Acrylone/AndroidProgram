@@ -2,20 +2,16 @@
 
 package com.example.user.myapplication.Game;
 
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,14 +29,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.myapplication.EndGame;
-import com.example.user.myapplication.Menu.ChoiceGame;
 import com.example.user.myapplication.Menu.Navigation.Rules.Rules;
 import com.example.user.myapplication.R;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,12 +57,6 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     private boolean bonusGone = false;
     private boolean isBonus = false;
 
-    private View main;
-    private ImageView imageView;
-    String selectedImagePath;
-    public static final String PRODUCT_PHOTO = "photo";
-    public static Bitmap product_image;
-
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
@@ -80,7 +68,8 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     private CalculateDiceFive calculateDiceFive; //Call the class relevant
     private ProgressBar progressBar;
     int clickcount = 0; //Counter for how many times clicking on the desactive Button -> message
-    private int counterTotal = 0;
+
+    private List<ScoreButton> scoreButtonsComputer;
 
     List<MediaPlayer> mediaPlayers;
 
@@ -90,7 +79,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.five_dice_game);
 
 
-        //********//Countdown ont rightside**************************************************************
+        //********//Countdown out rightside**************************************************************
 
 
 
@@ -98,8 +87,34 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         //******//ProgressBar function**********************************************************************
         progressBar = (ProgressBar) findViewById(R.id.progressbarfivedice);
         progressBar.setMax(105);
-        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        setupCommercials();
+
+        setupClickableButtons();
+
+        alreadyThrown = 0;
+        isAbleToClickScoreButton = false;
+
+        setupDice();
+
+        //setup the game's dice logics
+        calculateDiceFive = new CalculateDiceFive(dice);
+
+
+        setupYatzyButton();
+
+        setupBlinkingButton();
+
+        setupInfoButtons();
+
+        linkToClickableElements();
+
+        setupMediaSound();
+
+    }
+
+
+    protected void setupCommercials() {
         RelativeLayout adContainer = (RelativeLayout)
                 findViewById(R.id.adMobView);
 
@@ -109,8 +124,9 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         adContainer.addView(mAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
+    }
 
-////////OnClickListener for the scoreNumbers////////////////////////////////////////////////////////
+    protected void setupClickableButtons() {
         final Button pen_one = (Button) findViewById(R.id.SCORE_ONE);
         pen_one.setOnClickListener(this);
         final Button pen_two = (Button) findViewById(R.id.SCORE_TWO);
@@ -142,7 +158,141 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         final Button pen_yatzy = (Button) findViewById(R.id.YATZY);
         pen_yatzy.setOnClickListener(this);
 
-////////////////////////////////////////////////////////////////////////////////////////////////////
+        scoreButtonsComputer = new ArrayList<>();
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_ONE));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TWO));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_THREE));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FOUR));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FIVE));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_SIX));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TOTAL));
+        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_BONUS));
+
+        for(ScoreButton compS: scoreButtonsComputer){
+            compS.setVisibility(View.GONE);
+        }
+    }
+
+    /**
+     * Launch animation fireworks Yatzy
+     */
+    protected void setupYatzyButton() {
+        final LayoutInflater inflater = getLayoutInflater();
+        final View layout = inflater.inflate(R.layout.animation_yatzy,
+                (ViewGroup) findViewById(R.id.animation_custom_container));
+
+        final MediaPlayer mplayer = MediaPlayer.create(this, R.raw.great_sound);
+        final Button activeAnimationYatzY = (Button) this.findViewById(R.id.YATZY);
+
+        activeAnimationYatzY.setOnClickListener(new View.OnClickListener() {
+
+            public void onClick(View v) {
+                clickScoreButton(activeAnimationYatzY);
+                progressBar.setProgress(progressBar.getProgress() + 7);
+                if (Integer.valueOf(activeAnimationYatzY.getText().toString()).equals(CalculateDiceFive.YATZY_CLASSIC_POINTS)) {
+                    mplayer.start();
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+
+                }
+            }
+        });
+    }
+
+    protected void setupDice() {
+        dice = new DieImageButton[NUM_OF_DICE];
+        dice[0] = (DieImageButton)
+                findViewById(R.id.diceOne);
+
+        dice[1] = (DieImageButton)
+                findViewById(R.id.diceTwo);
+
+        dice[2] = (DieImageButton)
+                findViewById(R.id.diceThree);
+
+        dice[3] = (DieImageButton)
+                findViewById(R.id.diceFour);
+
+        dice[4] = (DieImageButton)
+                findViewById(R.id.diceFive);
+
+        //**************************************************************************************************
+
+        //Loop to active/de-active the dice
+        for (DieImageButton dib : dice) {
+            dib.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    toggleActivation(view);
+                }
+            });
+        }
+
+        //Reset all the dice
+        initializeDice();
+    }
+    /**
+     * Make a blink button New Game
+     */
+    protected void setupBlinkingButton() {
+        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
+        final Button btn = (Button) findViewById(R.id.rollingdice);
+        final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
+
+        animation.setDuration(350); // duration - half a second
+        animation.setInterpolator(new
+
+                LinearInterpolator()
+
+        ); // do not alter animation rate
+        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
+        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
+        btn.startAnimation(animation);// Start blink animation
+
+        btn.setOnClickListener(new View.OnClickListener(){
+
+                                   public void onClick(View view) {
+                                       shakeMp.start();
+                                       throwDice(btn);
+                                       view.clearAnimation();
+                                   }
+
+                               }
+
+        );
+    }
+    /**
+     * Floating Button Help
+     */
+    protected void setupInfoButtons(){
+        //i (information) button
+
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.helpbonus);
+        fab.setImageResource(R.drawable.ic_help_24dp);
+        fab.setOnClickListener(new View.OnClickListener() {
+
+            LayoutInflater inflater = getLayoutInflater();
+            View layout = inflater.inflate(R.layout.help_bonus,
+                    (ViewGroup) findViewById(R.id.help_bonus_container));
+
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), Rules.class);
+                startActivity(i);
+//                Toast toast = new Toast(getApplicationContext());
+//                toast.setGravity(Gravity.NO_GRAVITY, 550, 400);
+//                toast.setDuration(Toast.LENGTH_LONG);
+//                toast.setView(layout);
+//                toast.show();
+            }
+        });
+
+
+        //text-clicks
+
         TextView pairs = (TextView) findViewById(R.id.pairview);
         pairs.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -213,143 +363,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
                 showPopupBonus(view);
             }
         });
-////////////////////////////////////////////////////////////////////////////////////////////////////
+    }
 
-        alreadyThrown = 0;
-        isAbleToClickScoreButton = false;
-
-        //Create array with 5 cells - and adapt each cell with the appropriate die
-        dice = new DieImageButton[NUM_OF_DICE];
-        dice[0] = (DieImageButton)
-                findViewById(R.id.diceOne);
-
-        dice[1] = (DieImageButton)
-                findViewById(R.id.diceTwo);
-
-        dice[2] = (DieImageButton)
-                findViewById(R.id.diceThree);
-
-        dice[3] = (DieImageButton)
-                findViewById(R.id.diceFour);
-
-        dice[4] = (DieImageButton)
-                findViewById(R.id.diceFive);
-
-//**************************************************************************************************
-
-        //Loop to active/de-active the dice
-        for (DieImageButton dib : dice) {
-            dib.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    toggleActivation(view);
-                }
-            });
-        }
-
-        //Reset all the dice
-        initializeDice();
-
-        calculateDiceFive = new CalculateDiceFive(dice);
-
-
-//******//Launch animation fireworks Yatzy//**************************UNDER CONSTRUCTION************
-
-        final LayoutInflater inflater = getLayoutInflater();
-        final View layout = inflater.inflate(R.layout.animation_yatzy,
-                (ViewGroup) findViewById(R.id.animation_custom_container));
-
-        final MediaPlayer mplayer = MediaPlayer.create(this, R.raw.great_sound);
-        final Button activeAnimationYatzY = (Button) this.findViewById(R.id.YATZY);
-
-        activeAnimationYatzY.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View v) {
-                clickScoreButton(activeAnimationYatzY);
-                progressBar.setProgress(progressBar.getProgress() + 7);
-                if (Integer.valueOf(activeAnimationYatzY.getText().toString()).equals(CalculateDiceFive.YATZY_CLASSIC_POINTS)) {
-                    mplayer.start();
-                    Toast toast = new Toast(getApplicationContext());
-                    toast.setGravity(Gravity.CENTER, 0, 0);
-                    toast.setDuration(Toast.LENGTH_LONG);
-                    toast.setView(layout);
-                    toast.show();
-
-                }
-            }
-        });
-
-
-//******//Sound Dice Rolling//**********************************************************************
-//        final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
-//
-//        final Button play_button = (Button) this.findViewById(R.id.rollingdice);
-//        play_button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                shakeMp.start();
-//                throwDice(play_button);
-//
-//            }
-//        });
-
-//**********Make a blink button New Game************************************************************
-        final Animation animation = new AlphaAnimation(1, 0); // Change alpha from fully visible to invisible
-        final Button btn = (Button) findViewById(R.id.rollingdice);
-        final MediaPlayer shakeMp = MediaPlayer.create(this, R.raw.shake_dice);
-
-        animation.setDuration(350); // duration - half a second
-        animation.setInterpolator(new
-
-                LinearInterpolator()
-
-        ); // do not alter animation rate
-        animation.setRepeatCount(Animation.INFINITE); // Repeat animation infinitely
-        animation.setRepeatMode(Animation.REVERSE); // Reverse animation at the end so the button will fade back in
-        btn.startAnimation(animation);// Start blink animation
-
-        btn.setOnClickListener(new View.OnClickListener()
-
-                               {
-
-                                   public void onClick(View view) {
-                                       shakeMp.start();
-                                       throwDice(btn);
-                                       view.clearAnimation();
-//        mediaPlayer.start();
-
-                                   }
-
-                               }
-
-        );
-
-
-//******// Floating Button Help//*******************************************************************
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.helpbonus);
-        fab.setImageResource(R.drawable.ic_help_24dp);
-        fab.setOnClickListener(new View.OnClickListener() {
-
-            LayoutInflater inflater = getLayoutInflater();
-            View layout = inflater.inflate(R.layout.help_bonus,
-                    (ViewGroup) findViewById(R.id.help_bonus_container));
-
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(getApplicationContext(), Rules.class);
-                startActivity(i);
-//                Toast toast = new Toast(getApplicationContext());
-//                toast.setGravity(Gravity.NO_GRAVITY, 550, 400);
-//                toast.setDuration(Toast.LENGTH_LONG);
-//                toast.setView(layout);
-//                toast.show();
-            }
-        });
-
-//**************************************************************************************************
-//**************************************************************************************************
-//**************************************************************************************************
-//******//Array List Of All the ScoreButtons//******************************************************
-
+    /**
+     *Array List Of All the ScoreButtons
+     */
+    protected void linkToClickableElements() {
         scoreButtons = new ArrayList<>();
         scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_ONE));
         scoreButtons.add((ScoreButton) findViewById(R.id.SCORE_TWO));
@@ -369,6 +388,15 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         scoreButtons.add((ScoreButton) findViewById(R.id.CHANCE));
         scoreButtons.add((ScoreButton) findViewById(R.id.YATZY));
 
+        for (ScoreButton s: scoreButtons) {
+            s.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    clickScoreButton(v);
+                }
+            });
+        }
+
         scoreButtonsLeft = new ArrayList<>();
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_ONE));
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_TWO));
@@ -376,7 +404,9 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_FOUR));
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_FIVE));
         scoreButtonsLeft.add((ScoreButton) findViewById(R.id.SCORE_SIX));
+    }
 
+    protected void setupMediaSound() {
         mediaPlayers = new ArrayList<>();
         final MediaPlayer mp = MediaPlayer.create(this, R.raw.pen);
         mediaPlayers.add(mp);
@@ -390,9 +420,12 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         mediaPlayers.add(mp5);
         final MediaPlayer mp6 = MediaPlayer.create(this, R.raw.pen6);
         mediaPlayers.add(mp6);
-
-
     }
+
+
+
+
+
 //*****End of OnCreate******************************************************************************
 //**************************************************************************************************
 //***Show PopUp Window to help the user to understand each box**************************************

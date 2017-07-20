@@ -13,6 +13,7 @@
     <dimen name="item_width">200dp</dimen>
     <dimen name="label_txt_size">20dp</dimen>
     <dimen name="label_txt_scorebutton">25dp</dimen>
+    <integer  name="score_button_weight">1</integer>
 
 
     <!--Floating action button-->
