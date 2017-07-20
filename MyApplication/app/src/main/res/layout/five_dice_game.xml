@@ -42,7 +42,7 @@
 
             <TableLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="@android:color/background_light">
 
@@ -53,28 +53,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtOne"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="left|center"
+                            android:layout_weight="2"
                             android:fontFamily="casual"
                             android:text="ONE"
                             android:textColor="@color/colorPrimary"
                             android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="left|center"
-                            />
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -83,26 +82,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_ONE"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_ONE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -120,28 +118,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtTwo"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="TWO"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -150,26 +147,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_TWO"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_TWO"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -187,28 +183,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtThree"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="THREE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -217,26 +212,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_THREE"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_THREE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -246,6 +240,7 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
+
                 <TableRow
                     android:id="@+id/col0row3"
                     android:layout_weight="1">
@@ -253,28 +248,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtFour"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="FOUR"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -283,26 +277,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_FOUR"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_FOUR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -312,6 +305,7 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
+
                 <TableRow
                     android:id="@+id/col0row4"
                     android:layout_weight="1">
@@ -319,28 +313,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtFive"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="FIVE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -349,26 +342,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_FIVE"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_FIVE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -378,6 +370,7 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
+
                 <TableRow
                     android:id="@+id/col0row5"
                     android:layout_weight="1">
@@ -385,28 +378,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
                             android:id="@+id/txtSix"
-                            android:layout_weight="2"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="SIX"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/one" />
 
@@ -415,26 +407,25 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_SIX"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:textSize="@dimen/label_txt_scorebutton" />
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_SIX"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
-                            android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:textAlignment="center" />
 
                     </LinearLayout>
 
@@ -444,6 +435,7 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
+
                 <TableRow
                     android:id="@+id/col0row6"
                     android:layout_weight="1">
@@ -451,28 +443,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
-                            android:id="@+id/txtTotal"
-                            android:layout_weight="2"
+                            android:id="@+id/totalview"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="TOTAL"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/emptydice" />
 
@@ -481,26 +472,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_TOTAL"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
                             android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:clickable="false"/>
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_TOTAL"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:clickable="false"/>
 
                     </LinearLayout>
 
@@ -510,6 +502,7 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
+
                 <TableRow
                     android:id="@+id/col0row7"
                     android:layout_weight="1">
@@ -517,28 +510,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1">
-
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
                         <TextView
-                            android:id="@+id/txtBonus"
-                            android:layout_weight="2"
+                            android:id="@+id/bonusview"
                             android:layout_width="match_parent"
-                            android:fontFamily="casual"
-                            android:text="ONE"
-                            android:textColor="@color/colorPrimary"
-                            android:textSize="@dimen/label_txt_size"
-                            android:textStyle="normal|bold"
                             android:layout_height="wrap_content"
                             android:layout_gravity="left|center"
-                            />
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="BONUS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="@dimen/label_txt_size"
+                            android:textStyle="normal|bold" />
+
                         <ImageView
                             android:layout_width="match_parent"
-                            android:layout_weight="7"
                             android:layout_height="20dp"
                             android:layout_gravity="center"
+                            android:layout_weight="7"
 
                             android:src="@drawable/emptydice" />
 
@@ -547,26 +539,27 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
                         android:layout_weight="2"
-                        >
+                        android:orientation="horizontal">
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/SCORE_BONUS"
                             android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
                             android:textSize="@dimen/label_txt_scorebutton"
-                            android:layout_height="wrap_content" />
+                            android:clickable="false"/>
 
                         <com.example.user.myapplication.Game.ScoreButton
                             android:id="@+id/p2_SCORE_BONUS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:background="@drawable/separate_column"
                             android:textAlignment="center"
-                            android:layout_height="wrap_content"
-                            android:layout_width="wrap_content" />
+                            android:clickable="false"/>
 
                     </LinearLayout>
 
@@ -576,18 +569,6 @@
                 <View
                     android:layout_height="2dip"
                     android:background="#000000" />
-
-                <View
-                    android:layout_height="2dip"
-                    android:background="#000000" />
-
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#000000" />-->
-
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#B71C1C" />-->
 
 
             </TableLayout>
@@ -599,19 +580,14 @@
             android:layout_height="match_parent"
             android:layout_weight="3">
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <ProgressBar
+                android:id="@+id/progressbarfivedice"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:progressDrawable="@drawable/progress_drawable_vertical" />
 
-                <ProgressBar
-                    android:id="@+id/progressbarfivedice"
-                    style="@android:style/Widget.ProgressBar.Horizontal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:progressDrawable="@drawable/progress_drawable_vertical" />
-
-            </FrameLayout>
         </FrameLayout>
 
         <FrameLayout
@@ -627,221 +603,492 @@
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/pairview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="PAIRS"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/PAIR"
-                        android:layout_marginRight="25dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
-                    <!--android:drawableLeft="@drawable/pen"/>-->
+
+                        <TextView
+                            android:id="@+id/pairview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="PAIRS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/PAIR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_PAIR"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#EF5350" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/twopairview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="2 PAIRS"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/TWOPAIRS"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/twopairview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="2 PAIRS"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/TWOPAIRS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_TWOPAIRS"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#F44336" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/threeofkindview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="3 OF KIND"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/THREEOFKIND"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/threeofkindview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="3 OF KIND"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/THREEOFKIND"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_THREEOFKIND"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#E53935" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/fourofkindview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="4 OF KIND"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/FOUROFKIND"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/fourofkindview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="4 OF KIND"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/FOUROFKIND"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_FOUROFKIND"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#D32F2F" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/lowstraightview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="1-2-3-4-5"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/STRAIGHTLOW"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/lowstraightview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="1-2-3-4-5"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/STRAIGHTLOW"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_STRAIGHTLOW"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#C62828" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/highstraightview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="2-3-4-5-6"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="16dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/STRAIGHTHIGH"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+
+                        <TextView
+                            android:id="@+id/highstraightview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="2-3-4-5-6"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/STRAIGHTHIGH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_STRAIGHTHIGH"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#B71C1C" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/fullhouseview"
-                        android:layout_marginLeft="3dp"
-                        android:fontFamily="casual"
-                        android:text="FULL HOUSE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="14dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/FULLHOUSE"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/fullhouseview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="FULL HOUSE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/FULLHOUSE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_FULLHOUSE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#D50000" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/chanceview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="CHANCE"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/CHANCE"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/chanceview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="CHANCE"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/CHANCE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_CHANCE"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#D50000" />-->
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
                 <TableRow android:layout_weight="1">
 
-                    <TextView
-                        android:id="@+id/yatzyview"
-                        android:layout_marginLeft="5dp"
-                        android:fontFamily="casual"
-                        android:text="YATZY"
-                        android:textColor="@color/colorPrimary"
-                        android:textSize="15dp"
-                        android:textStyle="normal|bold" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="horizontal">
 
 
-                    <com.example.user.myapplication.Game.ScoreButton
-                        android:id="@+id/YATZY"
-                        android:layout_marginRight="30dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp" />
+                        <TextView
+                            android:id="@+id/yatzyview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="2"
+                            android:fontFamily="casual"
+                            android:text="YATZY"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="normal|bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2"
+                        android:orientation="horizontal">
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/YATZY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center"
+                            android:textSize="@dimen/label_txt_scorebutton" />
+
+                        <com.example.user.myapplication.Game.ScoreButton
+                            android:id="@+id/p2_YATZY"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@drawable/separate_column"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
 
                 </TableRow>
-                <!--<View-->
-                <!--android:layout_height="2dip"-->
-                <!--android:background="#D50000" />-->
-
+                <View
+                    android:layout_height="2dip"
+                    android:background="#000000" />
 
             </TableLayout>
+
         </FrameLayout>
 
     </LinearLayout>
@@ -985,8 +1232,8 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:textAlignment="center"
-            android:textSize="60dp"
             android:textColor="@android:color/holo_red_light"
+            android:textSize="60dp"
             android:textStyle="bold" />
 
     </FrameLayout>

@@ -1,90 +1,133 @@
 package com.example.user.myapplication.Game;
 
-import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TableRow;
 
 import com.example.user.myapplication.R;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class FiveDiceGameVsComp extends FiveDiceGame {
 
-    private List<ScoreButton> scoreButtonsComputer;
 
+    protected boolean isCompTurn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.five_dice_game);
-        getSupportActionBar().hide();
 
-        //column1
-        TableRow[] leftCol = {
-                (TableRow) findViewById(R.id.col0row0),
-                (TableRow) findViewById(R.id.col0row1),
-                (TableRow) findViewById(R.id.col0row2),
-                (TableRow) findViewById(R.id.col0row3),
-                (TableRow) findViewById(R.id.col0row4),
-                (TableRow) findViewById(R.id.col0row5),
-                (TableRow) findViewById(R.id.col0row6),
-                (TableRow) findViewById(R.id.col0row7)
-        };
+        isGameWithComp = true;
+        setCompButtonsVisible();
 
-        scoreButtonsComputer = new ArrayList<>();
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_ONE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TWO));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_THREE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FOUR));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FIVE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_SIX));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TOTAL));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_BONUS));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.PAIR));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.TWOPAIRS));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.THREEOFKIND));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.FOUROFKIND));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.STRAIGHTLOW));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.STRAIGHTHIGH));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.FULLHOUSE));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.CHANCE));
-//        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.YATZY));
+        //arbitrary
+        isCompTurn = false;
+    }
 
+    protected void setCompButtonsVisible() {
+        for(ScoreButton s : scoreButtonsComputer) {
+            s.setVisibility(View.VISIBLE);
+        }
+    }
 
-        for(ScoreButton sb: scoreButtonsComputer){
-            sb.setVisibility(View.VISIBLE);
+    @Override
+    public void clickScoreButton(View v) {
+        clickScoreButtonComp(v , false);
+    }
+
+    public void clickScoreButtonComp(View v , boolean isClickedByComp) {
+        if(isCompTurn && !isClickedByComp) {    //if player clicked on comp turn
+            return;
         }
 
-        for(TableRow tr : leftCol) {
-            ScoreButton sb = new ScoreButton(this);
-//            sb.setBackgroundColor(Color.TRANSPARENT);
-            sb.setVisibility(View.VISIBLE);
-            tr.addView(sb);
-            tr.invalidate();
-            tr.postInvalidate();
-            /*
-            android:layout_marginRight="20dp"
-                        android:background="@android:color/transparent"
-                        android:onClick="clickScoreButton"
-                        android:textSize="25dp"
-             */
+        super.clickScoreButton(v);
+        Log.i("turn_end" , "ended turn for " + (isCompTurn? "computer" : "player"));
+        isCompTurn = !isCompTurn;
+
+        if(isCompTurn) {
+            doCompPlay();
+        }
+    }
+
+    @Override
+    public void throwDice(View view) {
+        throwDiceComp(view , false);
+    }
+    public void throwDiceComp(View view , boolean isClickedByComp) {
+        if(isCompTurn && !isClickedByComp) {    //if player clicked on comp turn
+            return;
         }
 
+        if(!isCompTurn) {
+            super.throwDice(view);
+        }
+        else {
+            Log.i("throw_dice" , "thrown by comp");
+            alreadyThrown++;
 
-        LinearLayout li = (LinearLayout)findViewById(R.id.linearLayout5dice);
-        li.setBackgroundColor(getResources().getColor(R.color.transparent));
-        li.requestLayout();
-        li.invalidate();
-        li.postInvalidate();
-
-        RelativeLayout rl = (RelativeLayout)findViewById(R.id.activity_main_newgame);
-        rl.invalidate();
+            for (int i = 0; i < scoreButtonsComputer.size(); i++) {
+                ScoreButton currentScore = scoreButtonsComputer.get(i);
+                if (currentScore.isEnabled()) {
+                    switch (currentScore.getId()) {
+                        case R.id.p2_SCORE_ONE:
+                            showScore1(currentScore);
+                            break;
+                        case R.id.p2_SCORE_TWO:
+                            showScore2(currentScore);
+                            break;
+                        case R.id.p2_SCORE_THREE:
+                            showScore3(currentScore);
+                            break;
+                        case R.id.p2_SCORE_FOUR:
+                            showScore4(currentScore);
+                            break;
+                        case R.id.p2_SCORE_FIVE:
+                            showScore5(currentScore);
+                            break;
+                        case R.id.p2_SCORE_SIX:
+                            showScore6(currentScore);
+                            break;
+                        case R.id.p2_PAIR:
+                            showScorePair(currentScore);
+                            break;
+                        case R.id.p2_TWOPAIRS:
+                            clickScoreButtonTwoPairs(currentScore);
+                            break;
+                        case R.id.p2_THREEOFKIND:
+                            showScoreThreeOfKind(currentScore);
+                            break;
+                        case R.id.p2_FOUROFKIND:
+                            showScoreFourOfKind(currentScore);
+                            break;
+                        case R.id.p2_STRAIGHTLOW:
+                            showScoreStraightLow(currentScore);
+                            break;
+                        case R.id.p2_STRAIGHTHIGH:
+                            showScoreStraightHigh(currentScore);
+                            break;
+                        case R.id.p2_FULLHOUSE:
+                            showScoreFullHouse(currentScore);
+                            break;
+                        case R.id.p2_CHANCE:
+                            showScoreChance(currentScore);
+                            break;
+                        case R.id.p2_YATZY:
+                            showScoreYatzy(currentScore);
+                            break;
+                        case R.id.p2_SCORE_BONUS:
+                            showScoreBonus(currentScore);
+                            break;
+                        case R.id.p2_SCORE_TOTAL:
+                            showScoreTotal(currentScore);
+                            break;
+                    }
+                }
+            }
+        }
     }
 
 
+
+    protected void doCompPlay() {
+        ScoreButton chosenButtonToPlay = scoreButtonsPlayableComputer.get(0);
+        scoreButtonsPlayableComputer.remove(chosenButtonToPlay);
+        clickScoreButtonComp(chosenButtonToPlay , true);
+    }
 }

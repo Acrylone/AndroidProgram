@@ -12,6 +12,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
     private static int COUNTDOWN = NUM_OF_ALLOWED_THROWS -1;
 
-    private int alreadyThrown;
+    protected int alreadyThrown;
 
     protected boolean isAbleToClickScoreButton;
 
@@ -69,15 +70,17 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     private ProgressBar progressBar;
     int clickcount = 0; //Counter for how many times clicking on the desactive Button -> message
 
-    private List<ScoreButton> scoreButtonsComputer;
+    protected boolean isGameWithComp;
+    protected List<ScoreButton> scoreButtonsComputer;
+    protected List<ScoreButton> scoreButtonsPlayableComputer;
 
     List<MediaPlayer> mediaPlayers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.five_dice_game);
-
 
         //********//Countdown out rightside**************************************************************
 
@@ -94,6 +97,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
         alreadyThrown = 0;
         isAbleToClickScoreButton = false;
+        isGameWithComp = false;
 
         setupDice();
 
@@ -158,13 +162,27 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         final Button pen_yatzy = (Button) findViewById(R.id.YATZY);
         pen_yatzy.setOnClickListener(this);
 
+        scoreButtonsPlayableComputer = new ArrayList<>();
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_ONE));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TWO));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_THREE));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FOUR));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FIVE));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_SIX));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_PAIR));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_TWOPAIRS));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_THREEOFKIND));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_FOUROFKIND));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_STRAIGHTLOW));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_STRAIGHTHIGH));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_FULLHOUSE));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_CHANCE));
+        scoreButtonsPlayableComputer.add((ScoreButton) findViewById(R.id.p2_YATZY));
+
         scoreButtonsComputer = new ArrayList<>();
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_ONE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TWO));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_THREE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FOUR));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_FIVE));
-        scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_SIX));
+        for(ScoreButton s : scoreButtonsPlayableComputer) {
+            scoreButtonsComputer.add(s);
+        }
         scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_TOTAL));
         scoreButtonsComputer.add((ScoreButton) findViewById(R.id.p2_SCORE_BONUS));
 
@@ -514,6 +532,13 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     //*****On Click Score Button - play a move**************************************************
     @Override
     public void onClick(View v) {
+        onClickCustom(v);
+    }
+    public void onClickCustom(View v) {
+        if(!isGameWithComp && scoreButtonsComputer.contains(v)) {
+            return;
+        }
+
         if (!isAbleToClickScoreButton) {
             Toast.makeText(this, "Throw dice first!", Toast.LENGTH_SHORT).show();
             return;
@@ -523,7 +548,8 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
         int rand = (int) (mediaPlayers.size() * Math.random());
         mediaPlayers.get(rand).start();
 
-        progressBar.setProgress(progressBar.getProgress() + INC_PROGRESS_BAR);
+        if(!isGameWithComp)
+            progressBar.setProgress(progressBar.getProgress() + INC_PROGRESS_BAR);
 //        zeroAllUnpressedScoreButtons((ScoreButton) v);
 
         clickScoreButton(v);
@@ -556,58 +582,59 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     public void updateScores() {
         //Find all score options
         for (int i = 0; i < scoreButtons.size(); i++) {
-            if (scoreButtons.get(i).isEnabled()) {
-                switch (scoreButtons.get(i).getId()) {
+            ScoreButton currentScore = scoreButtons.get(i);
+            if (currentScore.isEnabled()) {
+                switch (currentScore.getId()) {
                     case R.id.SCORE_ONE:
-                        showScore1(scoreButtons.get(i));
+                        showScore1(currentScore);
                         break;
                     case R.id.SCORE_TWO:
-                        showScore2(scoreButtons.get(i));
+                        showScore2(currentScore);
                         break;
                     case R.id.SCORE_THREE:
-                        showScore3(scoreButtons.get(i));
+                        showScore3(currentScore);
                         break;
                     case R.id.SCORE_FOUR:
-                        showScore4(scoreButtons.get(i));
+                        showScore4(currentScore);
                         break;
                     case R.id.SCORE_FIVE:
-                        showScore5(scoreButtons.get(i));
+                        showScore5(currentScore);
                         break;
                     case R.id.SCORE_SIX:
-                        showScore6(scoreButtons.get(i));
+                        showScore6(currentScore);
                         break;
                     case R.id.PAIR:
-                        showScorePair(scoreButtons.get(i));
+                        showScorePair(currentScore);
                         break;
                     case R.id.TWOPAIRS:
-                        clickScoreButtonTwoPairs(scoreButtons.get(i));
+                        clickScoreButtonTwoPairs(currentScore);
                         break;
                     case R.id.THREEOFKIND:
-                        showScoreThreeOfKind(scoreButtons.get(i));
+                        showScoreThreeOfKind(currentScore);
                         break;
                     case R.id.FOUROFKIND:
-                        showScoreFourOfKind(scoreButtons.get(i));
+                        showScoreFourOfKind(currentScore);
                         break;
                     case R.id.STRAIGHTLOW:
-                        showScoreStraightLow(scoreButtons.get(i));
+                        showScoreStraightLow(currentScore);
                         break;
                     case R.id.STRAIGHTHIGH:
-                        showScoreStraightHigh(scoreButtons.get(i));
+                        showScoreStraightHigh(currentScore);
                         break;
                     case R.id.FULLHOUSE:
-                        showScoreFullHouse(scoreButtons.get(i));
+                        showScoreFullHouse(currentScore);
                         break;
                     case R.id.CHANCE:
-                        showScoreChance(scoreButtons.get(i));
+                        showScoreChance(currentScore);
                         break;
                     case R.id.YATZY:
-                        showScoreYatzy(scoreButtons.get(i));
+                        showScoreYatzy(currentScore);
                         break;
                     case R.id.SCORE_BONUS:
-                        showScoreBonus(scoreButtons.get(i));
+                        showScoreBonus(currentScore);
                         break;
                     case R.id.SCORE_TOTAL:
-                        showScoreTotal(scoreButtons.get(i));
+                        showScoreTotal(currentScore);
                         break;
                 }
             }
@@ -911,18 +938,7 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 //******/Determinate the end of the game************************************************************
 
         num_of_launches++;
-        if (num_of_launches == NUM_OF_THROWING_MAX) {
-
-            //update the next activity with the score
-            String finalScoreStr = ((ScoreButton) findViewById(R.id.SCORE_TOTAL)).getText().toString();
-            EndGame.scoreTotal = Integer.valueOf(finalScoreStr);
-
-//            ImageView imageView = (ImageView) findViewById(R.id.imageView);
-//            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
-//            imageView.setImageBitmap(screenshot);
-
-            startActivity(new Intent(this, EndGame.class));
-        }
+        checkEndgame();
 
 
 //******//Reactive the deactive Button image (grey rolling dice) to the active Button image********
@@ -938,6 +954,22 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
 
         //Do automatically dice Throw
         throwDice(activeButton);
+    }
+
+    public void checkEndgame() {
+        if ((isGameWithComp && (num_of_launches == NUM_OF_THROWING_MAX)) ||
+        (!isGameWithComp && (num_of_launches == NUM_OF_THROWING_MAX*2))  ) {
+
+            //update the next activity with the score
+            String finalScoreStr = ((ScoreButton) findViewById(R.id.SCORE_TOTAL)).getText().toString();
+            EndGame.scoreTotal = Integer.valueOf(finalScoreStr);
+
+//            ImageView imageView = (ImageView) findViewById(R.id.imageView);
+//            Bitmap screenshot = Screenshot.takescreenshotOfRootView(imageView);
+//            imageView.setImageBitmap(screenshot);
+
+            startActivity(new Intent(this, EndGame.class));
+        }
     }
 
 
