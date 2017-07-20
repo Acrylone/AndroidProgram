@@ -24,10 +24,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.example.user.myapplication.Game.FiveDiceGame;
 import com.example.user.myapplication.R;
 
 import java.io.File;
+import java.util.ArrayList;
 
 import static com.example.user.myapplication.R.id.Screenshot;
 import static com.example.user.myapplication.R.id.imageView;
@@ -41,11 +43,18 @@ public class RecordsActivity extends AppCompatActivity {
     SharedPreferences.Editor editor;
     private static final String PREFS_NAME = "PREFS_NAME";
     private static final String PREFS_SCORE = "PREFS_SCORE";
+//    List<Score> scoreStrings = new ArrayList<Score>();
+//    String[] exScores = scores.split("\\|");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_records);
+
+//        highscore_headers = String.format("%7s","rank") +
+//                String.format("%11s","name") +
+//                String.format("%10s","score") +
+//                String.format("%5s","lvl");
 
         String nickname;
         sharedPreferences = getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
@@ -54,6 +63,13 @@ public class RecordsActivity extends AppCompatActivity {
         nickname = sharedPreferences.getString(PREFS_NAME, nickname);
         shownickname.setText(nickname);
 
+
+//        for(String eSc : exScores){
+//            String[] parts = eSc.split(" - ");
+//            scoreStrings.add(new Score(parts[0], Integer.parseInt(parts[1])));
+//        }
+//        Score newScore = new Score(exScore);
+//        scoreStrings.add(newScore);
 
         sharedPreferences = this.getSharedPreferences("GAME_DATA", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

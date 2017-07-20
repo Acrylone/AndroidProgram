@@ -76,7 +76,6 @@ public class FiveDiceGameVsComp extends FiveDiceGame {
         }
 
 
-
         LinearLayout li = (LinearLayout)findViewById(R.id.linearLayout5dice);
         li.setBackgroundColor(getResources().getColor(R.color.transparent));
         li.requestLayout();

@@ -584,10 +584,11 @@ public class FiveDiceGame extends AppCompatActivity implements View.OnClickListe
     //*****Function to active update and limit the rolling dice and showing result dice*****************
     public void throwDice(View view) {
         isAbleToClickScoreButton = true;
+
+        //**Make a countdown 3-2-1 for the number of launch of dice**************
         TextView tx = (TextView) findViewById(R.id.countdown);
         Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/DIGITALDREAM.ttf");
         tx.setTypeface(custom_font);
-
         tx.setText("" + COUNTDOWN);
         COUNTDOWN--;
 

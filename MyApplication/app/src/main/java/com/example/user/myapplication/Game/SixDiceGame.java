@@ -2,6 +2,7 @@ package com.example.user.myapplication.Game;
 
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.myapplication.EndGame;
@@ -30,12 +32,15 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
 
     private static final int NUM_OF_THROWING_MAX = 19;
     private static final int NUM_OF_DICE = 6;
-    private static final int NUM_OF_ALLOWED_THROWS = 20;
+    private static final int NUM_OF_ALLOWED_THROWS = 3;
+    private static int COUNTDOWN = NUM_OF_ALLOWED_THROWS -1;
     private int alreadyThrown;
 
     private boolean bonusGone = false;
     private boolean isBonus = false;
     public boolean onTheGame = false;
+    protected boolean isAbleToClickScoreButton;
+
 
 
     private int num_of_launches = 0;
@@ -499,6 +504,14 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
 
     //*****Function to active update and limit the rolling dice and showing result dice*****************
     public void throwDice(View view) {
+        isAbleToClickScoreButton = true;
+
+        //**Make a countdown 3-2-1 for the number of launch of dice**************
+        TextView tx = (TextView) findViewById(R.id.countdown);
+        Typeface custom_font = Typeface.createFromAsset(getAssets(), "fonts/DIGITALDREAM.ttf");
+        tx.setTypeface(custom_font);
+        tx.setText("" + COUNTDOWN);
+        COUNTDOWN--;
 
         if (alreadyThrown < NUM_OF_ALLOWED_THROWS) {
 
@@ -725,7 +738,9 @@ public class SixDiceGame extends AppCompatActivity implements View.OnClickListen
         alreadyThrown = 0;
         //Reset the number of click on the desactive Button
         clickcount = 0;
-
+        //Reset the countdown
+        COUNTDOWN = NUM_OF_ALLOWED_THROWS -1;
+        
         num_of_launches++;
         if (num_of_launches == NUM_OF_THROWING_MAX) {
 

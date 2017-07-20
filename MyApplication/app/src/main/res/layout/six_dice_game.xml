@@ -316,7 +316,7 @@
                         android:id="@+id/threepairview"
                         android:layout_marginLeft="5dp"
                         android:fontFamily="casual"
-                        android:text="2 PAIRS"
+                        android:text="3 PAIRS"
                         android:textColor="@color/colorPrimary"
                         android:textSize="15dp"
                         android:textStyle="normal|bold" />
@@ -738,6 +738,27 @@
             android:layout_gravity="center_vertical"
             app:backgroundTint="@color/com_facebook_blue"
             app:srcCompat="@drawable/ic_help_24dp" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayoutRight"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/dice"
+        android:layout_below="@+id/linearLayout5dice"
+        android:layout_toEndOf="@+id/rollingdice"
+        android:layout_toRightOf="@+id/rollingdice">
+
+        <TextView
+            android:id="@+id/countdown"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center|center_horizontal"
+            android:textAlignment="center"
+            android:textSize="60dp"
+            android:textColor="@android:color/holo_red_dark"
+            android:textStyle="bold" />
+
     </FrameLayout>
 
 
